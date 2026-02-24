@@ -5,6 +5,8 @@ import { ArrowLeft, Share2, Bookmark, BarChart3, ShieldCheck, Globe2, Zap, Downl
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import DisasterRecoveryCTA from "@/components/ui/DisasterRecoveryCTA";
+
 
 export default function GRCReportPage() {
     return (
@@ -232,6 +234,8 @@ export default function GRCReportPage() {
                     </div>
                 </div>
             </section>
+
+            <DisasterRecoveryCTA />
         </div>
     );
 }

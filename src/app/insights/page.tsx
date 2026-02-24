@@ -16,6 +16,14 @@ const articles = [
     },
     {
         type: "Case Study",
+        title: "Rapid Disaster Recovery: Wildlife Tours Rwanda",
+        excerpt: "How we deployed an interim online presence and recovered client data snapshots in under 48 hours following a total platform loss.",
+        date: "Feb 24, 2026",
+        cta: "Read Story",
+        href: "/insights/wildlife-tours-rwanda-disaster-recovery",
+    },
+    {
+        type: "Case Study",
         title: "Liquid Glass & Cinematic Legacy: The Ayubu Africa Digital Presence",
         excerpt: "How we translated a 20-year filmmaking legacy into a premium digital brand for East Africa's premier Director.",
         date: "Feb 23, 2026",

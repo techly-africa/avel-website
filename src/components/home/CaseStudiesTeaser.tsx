@@ -4,22 +4,22 @@ import { ArrowRight } from "lucide-react";
 
 const cases = [
     {
-        title: "National Mobility Payments",
-        subtitle: "Mobility",
-        summary: "Reconciliation and operational governance for a nationwide multimodal transit system.",
-        outcome: "Eliminated processing drift for 1M+ daily transactions.",
+        title: "Large-Scale Transaction Processing",
+        subtitle: "High-Volume Systems",
+        summary: "Reconciliation and operational governance for processing millions of daily transactions.",
+        outcome: "Eliminated processing drift and ensured high availability.",
     },
     {
-        title: "Merchant Lending Ecosystem",
-        subtitle: "Fintech",
-        summary: "Implementation of credit scorecards and automated compliance controls for SME lending.",
-        outcome: "99.9% audit accuracy across the lending lifecycle.",
+        title: "Automated Compliance & Lending",
+        subtitle: "Financial Services",
+        summary: "Implementation of automated compliance controls and scorecards for credit risk models.",
+        outcome: "Achieved continuous audit readiness across the lifecycle.",
     },
     {
-        title: "Multi-tenant Commerce Platform",
-        subtitle: "Public Sector",
-        summary: "Identity and access management (IAM) with full auditability for inter-agency commerce.",
-        outcome: "Mapped 200+ control points to legal frameworks.",
+        title: "Secure Data Exchange Platform",
+        subtitle: "Enterprise Integration",
+        summary: "Identity and access management (IAM) with full auditability for inter-organizational commerce.",
+        outcome: "Mapped complex control points to standardized security frameworks.",
     },
 ];
 
@@ -44,7 +44,7 @@ export default function CaseStudiesTeaser() {
                             <span className="text-xs font-bold text-electric-blue uppercase tracking-widest mb-4 inline-block">{item.subtitle}</span>
                             <h4 className="text-2xl font-bold text-midnight mb-4 tracking-tight leading-tight">{item.title}</h4>
                             <p className="text-midnight/60 text-sm leading-relaxed mb-8 flex-grow italic">
-                                "{item.summary}"
+                                &quot;{item.summary}&quot;
                             </p>
                             <div className="pt-8 border-t border-gray-50">
                                 <p className="text-xs font-bold text-midnight/40 uppercase tracking-widest mb-2">Outcome</p>

@@ -3,6 +3,7 @@
 import React from "react";
 import { Search, PenTool, Cpu, Share2, Database, ShieldCheck, CheckCircle2, Clock, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import DisasterRecoveryCTA from "@/components/ui/DisasterRecoveryCTA";
 
 const services = [
     {
@@ -172,6 +173,8 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            <DisasterRecoveryCTA />
 
             {/* Final Call Band */}
             <section className="py-24 px-6 bg-white">

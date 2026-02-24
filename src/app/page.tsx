@@ -8,6 +8,7 @@ import CaseStudiesTeaser from "@/components/home/CaseStudiesTeaser";
 import HowWeEngage from "@/components/home/HowWeEngage";
 import Testimonials from "@/components/home/Testimonials";
 import FinalCTA from "@/components/home/FinalCTA";
+import DisasterRecoveryCTA from "@/components/ui/DisasterRecoveryCTA";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <ThreePillars />
       <Outcomes />
       <ServicesPreview />
+      <DisasterRecoveryCTA />
       <FeaturedProducts />
       <CaseStudiesTeaser />
       <HowWeEngage />
