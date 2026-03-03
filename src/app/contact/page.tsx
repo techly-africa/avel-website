@@ -142,13 +142,22 @@ export default function ContactPage() {
                                 <div>
                                     <h3 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-6">Direct</h3>
                                     <div className="space-y-6">
-                                        <a href="mailto:copain@avel.africa" className="flex items-center group">
+                                        <a href="mailto:contact@avel.africa" className="flex items-center group">
                                             <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-midnight mr-6 shrink-0 group-hover:text-electric-blue transition-colors">
                                                 <Mail size={24} />
                                             </div>
                                             <div>
                                                 <p className="text-xs font-bold text-midnight/40 uppercase tracking-widest mb-0.5">Email</p>
-                                                <p className="font-bold text-midnight group-hover:text-electric-blue transition-colors">copain@avel.africa</p>
+                                                <p className="font-bold text-midnight group-hover:text-electric-blue transition-colors">contact@avel.africa</p>
+                                            </div>
+                                        </a>
+                                        <a href="tel:+250799903601" className="flex items-center group">
+                                            <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-midnight mr-6 shrink-0 group-hover:text-electric-blue transition-colors">
+                                                <Phone size={24} />
+                                            </div>
+                                            <div>
+                                                <p className="text-xs font-bold text-midnight/40 uppercase tracking-widest mb-0.5">Phone</p>
+                                                <p className="font-bold text-midnight group-hover:text-electric-blue transition-colors">+250 799 903 601</p>
                                             </div>
                                         </a>
                                     </div>
