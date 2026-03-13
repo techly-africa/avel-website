@@ -1,11 +1,6 @@
 import type { MetadataRoute } from "next";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 const BASE = "https://avel.africa";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -27,6 +22,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/terms`,                             lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
   ];
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    return staticRoutes;
+  }
+
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
   let insightRoutes: MetadataRoute.Sitemap = [];
   let caseStudyRoutes: MetadataRoute.Sitemap = [];
 
@@ -44,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       }));
     }
-  } catch { /* sitemap degrades gracefully without DB */ }
+  } catch { /* degrades gracefully */ }
 
   try {
     const { data: caseStudies } = await supabase
@@ -60,7 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       }));
     }
-  } catch { /* sitemap degrades gracefully without DB */ }
+  } catch { /* degrades gracefully */ }
 
   return [...staticRoutes, ...insightRoutes, ...caseStudyRoutes];
 }
