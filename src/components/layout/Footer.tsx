@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Mail, MapPin, XIcon, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Phone, XIcon, ArrowUpRight } from "lucide-react";
 
 const footerLinks = [
     {
@@ -123,6 +123,10 @@ export default function Footer() {
                         <div className="flex items-center">
                             <Mail size={14} className="mr-2" />
                             {email}
+                        </div>
+                        <div className="flex items-center">
+                            <Phone size={14} className="mr-2" />
+                            <a href="tel:+250799904601" className="hover:text-white transition-colors">+250 799 904 601</a>
                         </div>
                     </div>
                     <p className="text-sm text-white/30 text-center">

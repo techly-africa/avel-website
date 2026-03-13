@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 import { leadService } from "@/services/leadService";
 
 export default function ContactPage() {
@@ -59,6 +59,15 @@ export default function ContactPage() {
                                     <div>
                                         <h4 className="text-sm font-bold text-white mb-2">Direct Inquiry</h4>
                                         <p className="text-white/40 font-light">contact@avel.africa</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start space-x-6">
+                                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <Phone className="text-gold-accent" size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-sm font-bold text-white mb-2">Phone</h4>
+                                        <a href="tel:+250799904601" className="text-white/40 font-light hover:text-white transition-colors">+250 799 904 601</a>
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-6">
