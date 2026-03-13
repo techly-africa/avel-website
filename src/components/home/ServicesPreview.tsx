@@ -42,13 +42,32 @@ const services = [
 ];
 
 export default function ServicesPreview() {
+    const [content, setContent] = React.useState<any>(null);
+
+    React.useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const { contentService } = await import("@/services/contentService");
+                const data = await contentService.getContent('home_services');
+                if (data) setContent(data.data);
+            } catch (error) {
+                console.error("ServicesPreview Fetch Error:", error);
+            }
+        };
+        fetchContent();
+    }, []);
+
+    const label = content?.label || "Core Capabilities";
+    const headline = content?.headline || "Specialized engineering for high-trust ecosystems.";
+    const items = content?.items || services.map(s => s.title);
+
     return (
         <section className="py-24 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-16">
-                    <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">Core Capabilities</h2>
-                    <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight">
-                        Specialized engineering for <br /> high-trust ecosystems.
+                    <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">{label}</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight whitespace-pre-line">
+                        {headline}
                     </h3>
                 </div>
 

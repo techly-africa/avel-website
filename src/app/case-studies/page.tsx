@@ -1,104 +1,111 @@
 "use client";
 
-import React, { useState } from "react";
-import { caseStudies } from "@/lib/data/case-studies";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, Filter } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-
-const allTags = ["All", ...Array.from(new Set(caseStudies.flatMap(cs => cs.tags)))];
+import CTASection from "@/components/home/CTASection";
+import { caseStudyService, CaseStudy } from "@/services/caseStudyService";
 
 export default function CaseStudiesPage() {
-    const [activeTag, setActiveTag] = useState("All");
+    const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const filteredStudies = activeTag === "All"
-        ? caseStudies
-        : caseStudies.filter(cs => cs.tags.includes(activeTag));
+    useEffect(() => {
+        const fetchCaseStudies = async () => {
+            try {
+                const data = await caseStudyService.getCaseStudies();
+                setCaseStudies(data);
+            } catch (error: any) {
+                console.error("Error fetching case studies:", error?.message || error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchCaseStudies();
+    }, []);
 
     return (
-        <div className="flex flex-col">
-            <section className="pt-32 pb-20 px-6 bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <div className="max-w-3xl">
-                        <h1 className="text-5xl md:text-7xl font-bold text-midnight tracking-tight mb-8">
-                            Stories of <span className="text-electric-blue">delivery.</span>
-                        </h1>
-                        <p className="text-xl text-midnight/60 leading-relaxed">
-                            We focus on high-stakes interventions where clarity and compliance are the difference between success and failure. Read how we've helped teams stabilize and scale.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Filter Bar */}
-            <section className="sticky top-[72px] z-30 bg-white/80 backdrop-blur-md border-y border-gray-100 px-6 py-4">
-                <div className="max-w-7xl mx-auto flex items-center space-x-4 overflow-x-auto no-scrollbar">
-                    <Filter size={18} className="text-midnight/40 shrink-0" />
-                    <div className="flex items-center space-x-2">
-                        {allTags.map(tag => (
-                            <button
-                                key={tag}
-                                onClick={() => setActiveTag(tag)}
-                                className={cn(
-                                    "px-4 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap",
-                                    activeTag === tag
-                                        ? "bg-midnight text-white"
-                                        : "bg-neutral-bg text-midnight/40 hover:text-midnight"
-                                )}
-                            >
-                                {tag}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Grid */}
-            <section className="py-24 px-6 bg-neutral-bg min-h-[600px]">
+        <div className="bg-midnight text-white min-h-screen">
+            {/* Header */}
+            <section className="pt-40 pb-20 px-6">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
-                        layout
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                     >
-                        <AnimatePresence mode="popLayout">
-                            {filteredStudies.map((cs) => (
-                                <motion.div
-                                    key={cs.slug}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    className="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all flex flex-col group"
-                                >
-                                    <div className="flex flex-wrap gap-2 mb-6">
-                                        {cs.tags.map(t => (
-                                            <span key={t} className="text-[10px] font-black uppercase tracking-widest text-electric-blue bg-electric-blue/5 px-2.5 py-1 rounded-full">
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <h2 className="text-2xl font-bold text-midnight mb-4 tracking-tight leading-tight group-hover:text-electric-blue transition-colors">
-                                        {cs.title}
-                                    </h2>
-                                    <p className="text-midnight/60 text-sm leading-relaxed mb-8 flex-grow">
-                                        {cs.summary}
-                                    </p>
-                                    <Link
-                                        href={`/case-studies/${cs.slug}`}
-                                        className="flex justify-between items-center group/btn"
-                                    >
-                                        <span className="text-sm font-bold text-midnight">Read Story</span>
-                                        <div className="w-10 h-10 bg-neutral-bg rounded-xl flex items-center justify-center text-midnight group-hover/btn:bg-electric-blue group-hover/btn:text-white transition-all">
-                                            <ArrowRight size={18} />
-                                        </div>
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
+                        <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
+                            Mission <br />
+                            <span className="text-white/50 italic font-serif">Delivery.</span>
+                        </h1>
+                        <p className="text-white/50 text-xl md:text-2xl max-w-3xl leading-relaxed font-light">
+                            Case studies of technical resilience and strategic clarity delivered across African institutions and founders.
+                        </p>
                     </motion.div>
                 </div>
             </section>
+
+            {/* Case Studies List */}
+            <section className="py-24 px-6 relative">
+                <div className="max-w-7xl mx-auto">
+                    {loading ? (
+                        <div className="flex flex-col items-center justify-center py-20 space-y-4">
+                            <Loader2 className="animate-spin text-gold-accent" size={40} />
+                            <p className="text-white/40 font-serif italic">Reviewing archives...</p>
+                        </div>
+                    ) : caseStudies.length > 0 ? (
+                        <div className="space-y-20">
+                            {caseStudies.map((study, index) => (
+                                <motion.div
+                                    key={study.id}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="group grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-b border-white/5 pb-20 last:border-0"
+                                >
+                                    <div className="order-2 lg:order-1">
+                                        <span className="text-xs uppercase tracking-[0.2em] font-bold text-gold-accent block mb-6">Case Study</span>
+                                        <h3 className="text-3xl md:text-5xl font-bold mb-8 group-hover:text-gold-accent transition-colors">
+                                            {study.title}
+                                        </h3>
+                                        <div className="space-y-6">
+                                            <div>
+                                                <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-wide opacity-40">The Challenge</h4>
+                                                <p className="text-white/60 leading-relaxed font-light">{study.challenge}</p>
+                                            </div>
+                                            <div>
+                                                <h4 className="text-sm font-bold text-emerald-400 mb-2 uppercase tracking-wide">The Result</h4>
+                                                <p className="text-white/80 leading-relaxed font-light">{study.result}</p>
+                                            </div>
+                                        </div>
+                                        <Link href={`/case-studies/${study.slug}`} className="mt-10 inline-flex items-center space-x-2 text-white font-bold group-hover:text-gold-accent transition-colors">
+                                            <span>Read Full Case Study</span>
+                                            <ArrowRight size={18} />
+                                        </Link>
+                                    </div>
+                                    <div className="order-1 lg:order-2 aspect-video rounded-[2.5rem] bg-white/5 border border-white/10 overflow-hidden relative">
+                                        {study.image_url ? (
+                                            <img src={study.image_url} alt={study.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        ) : (
+                                            <>
+                                                <div className="absolute inset-0 bg-gradient-to-br from-institutional-navy/50 to-transparent" />
+                                                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05]" />
+                                            </>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-20 bg-white/5 rounded-[2.5rem] border border-white/10">
+                            <p className="text-white/40">No case studies available yet.</p>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            <CTASection />
         </div>
     );
 }

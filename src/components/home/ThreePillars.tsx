@@ -30,13 +30,31 @@ const pillars = [
 ];
 
 export default function ThreePillars() {
+    const [content, setContent] = React.useState<any>(null);
+
+    React.useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const data = await import("@/services/contentService").then(m => m.contentService.getContent('home_pillars'));
+                if (data) setContent(data.data);
+            } catch (error) {
+                console.error("Pillars Fetch Error:", error);
+            }
+        };
+        fetchContent();
+    }, []);
+
+    const label = content?.label || "Our Foundation";
+    const headline = content?.headline || "Comprehensive delivery for modern organizations.";
+    const items = content?.items || pillars.map(p => p.title);
+
     return (
         <section className="py-24 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-16">
-                    <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">Our Foundation</h2>
-                    <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight">
-                        Comprehensive delivery for <br /> modern organizations.
+                    <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">{label}</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight whitespace-pre-line">
+                        {headline}
                     </h3>
                 </div>
 

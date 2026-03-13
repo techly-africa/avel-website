@@ -1,203 +1,203 @@
 "use client";
 
-import React from "react";
-import { Search, PenTool, Cpu, Share2, Database, ShieldCheck, CheckCircle2, Clock, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import DisasterRecoveryCTA from "@/components/ui/DisasterRecoveryCTA";
+import Link from "next/link";
+import { ArrowRight, Cpu, Shield, Search } from "lucide-react";
+import TDDSection from "@/components/home/TDDSection";
+import CTASection from "@/components/home/CTASection";
 
-const services = [
+const pillars = [
     {
-        id: "diagnosis",
-        title: "Technology Risk Diagnosis",
-        icon: Search,
-        description: "A comprehensive 2-3 week engagement designed to uncover hidden architectural risks, legacy debt, and security gaps before they impact delivery.",
-        gets: ["Risk Heatmap", "Technical Debt Audit", "Path-to-Green Roadmap"],
-        timeline: "2-3 Weeks",
-        idealFor: "CTOs, Technical Directors, M&A Teams",
-    },
-    {
-        id: "design",
-        title: "Product & Solution Design",
-        icon: PenTool,
-        description: "We translate business vision into architecture-grade specifications. No 'drawing on napkins'—we deliver full-spec PRDs and FSDs.",
-        gets: ["FSD & PRD Documentation", "API Documentation (OpenAPI)", "System Architecture Diagrams"],
-        timeline: "4-6 Weeks",
-        idealFor: "Heads of Product, Founders, Program Managers",
-    },
-    {
-        id: "engineering",
-        title: "Engineering Delivery",
+        number: "01",
         icon: Cpu,
-        description: "High-performance, multi-tenant engineering for web, mobile, and backend systems. Built with compliance-by-design at its core.",
-        gets: ["Production-ready Codebase", "CI/CD Pipeline Setup", "Security Baseline Implementation"],
-        timeline: "Variable (Milestone-based)",
-        idealFor: "SMEs, Enterprise Innovation Teams",
+        color: "text-blue-400",
+        accent: "bg-blue-500/10 border-blue-500/20",
+        hover: "hover:border-blue-400/30",
+        label: "Strategic Pillar 01",
+        title: "Product Development & Digital Product Advisory",
+        description: "We architect products that scale with mission-critical integrity. From concept to resilient reality — built for institutions that cannot afford technical debt.",
+        capabilities: ["MVP Architecture & Strategy", "Institutional Systems Design", "Agile Product Advisory", "Technical Due Diligence"],
+        href: "/services/product-advisory",
     },
     {
-        id: "integration",
-        title: "Integration & API Engineering",
-        icon: Share2,
-        description: "Specialized engineering for telco, bank, and payment rails. We handle the complex 'glue' between disparate high-trust systems.",
-        gets: ["Custom API Gateways", "Bespoke Integrations", "Ecosystem Alignment Report"],
-        timeline: "6-10 Weeks",
-        idealFor: "Fintechs, Telcos, Banking Institutions",
+        number: "02",
+        icon: Shield,
+        color: "text-emerald-400",
+        accent: "bg-emerald-500/10 border-emerald-500/20",
+        hover: "hover:border-emerald-400/30",
+        label: "Strategic Pillar 02",
+        title: "GRC, Audit & Security Advisory",
+        description: "Safeguarding institutional trust through rigorous governance. We design frameworks that meet global standards while operating in African regulatory environments.",
+        capabilities: ["Security Audits & Vulnerability Assessment", "GRC Framework Design", "ISO/NIST Alignment", "Continuous Monitoring Strategy"],
+        href: "/services/grc-security",
     },
     {
-        id: "data",
-        title: "Data & Reconciliation",
-        icon: Database,
-        description: "Reconciliation is the heart of trust. We build systems that ensure ledger alignment, auditability, and real-time reporting.",
-        gets: ["Ledger Management Systems", "Automated Reconciliation Engines", "SLA Monitoring Dashboards"],
-        timeline: "8-12 Weeks",
-        idealFor: "CFOs, Operations Heads, Compliance Officers",
+        number: "03",
+        icon: Search,
+        color: "text-amber-400",
+        accent: "bg-amber-500/10 border-amber-500/20",
+        hover: "hover:border-amber-400/30",
+        label: "Strategic Pillar 03",
+        title: "Digital Forensics & Digital Sovereignty Advisory",
+        description: "Own your data. Secure your truth. Expert investigation and strategic advisory for organizations asserting full control over their digital assets.",
+        capabilities: ["Deep-Dive Digital Forensics", "Data Asset Sovereignty Advisory", "Incident Response & Recovery", "Secure Architecture Audits"],
+        href: "/services/forensics-sovereignty",
+    },
+];
+
+const sectors = ["Telecom", "Fintech", "Public Sector", "Banking", "Mobility", "SMEs", "Startups", "NGOs"];
+
+const steps = [
+    {
+        number: "01",
+        title: "Diagnosis",
+        body: "We begin every engagement with a rigorous technical and strategic assessment — understanding your systems, risks, and requirements before committing a direction.",
     },
     {
-        id: "security",
-        title: "Security & Compliance Engineering",
-        icon: ShieldCheck,
-        description: "Beyond just firewalls. We build logging, monitoring, and IAM controls directly into your product architecture.",
-        gets: ["Control Library (CIS/NIST)", "IAM Strategy & Implementation", "Audit-Ready Trail Logs"],
-        timeline: "Ongoing / Modular",
-        idealFor: "CISOs, Compliance Teams, Public Sector Units",
+        number: "02",
+        title: "Architecture",
+        body: "We design solutions that balance velocity with institutional integrity. Every architecture decision is documented, justified, and built to carry real weight.",
+    },
+    {
+        number: "03",
+        title: "Delivery",
+        body: "Uncompromising execution with continuous oversight. We remain engaged through delivery, ensuring what ships matches what was promised — without shortcuts.",
     },
 ];
 
 export default function ServicesPage() {
-    const openBooking = () => window.dispatchEvent(new CustomEvent("open-booking"));
-
     return (
-        <div className="flex flex-col">
-            {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 bg-midnight text-white">
-                <div className="max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="max-w-3xl"
-                    >
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-                            Advising. Building. <span className="text-soft-teal">Governing.</span>
-                        </h1>
-                        <p className="text-xl text-white/60 leading-relaxed mb-10">
-                            AVEL Africa provides high-spec technical interventions for organizations that cannot afford delivery drift. We combine strategic advisory with rigorous engineering.
-                        </p>
-                        <button
-                            onClick={openBooking}
-                            className="bg-electric-blue text-white px-8 py-4 rounded-2xl font-bold shadow-xl hover:translate-y-[-2px] transition-all flex items-center group"
+        <div className="bg-midnight text-white">
+
+            {/* Hero */}
+            <section className="relative pt-48 pb-32 px-6 overflow-hidden">
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] pointer-events-none" />
+                <div className="absolute top-1/2 right-[-8%] w-[600px] h-[600px] bg-gold-accent/[0.04] blur-[140px] rounded-full pointer-events-none" />
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+                        <p className="text-xs font-bold text-gold-accent uppercase tracking-[0.25em] mb-8">Our Services</p>
+                        <h1
+                            className="font-bold text-white tracking-tight leading-[0.9] mb-10 max-w-4xl"
+                            style={{ fontSize: "clamp(3rem, 7vw, 6rem)" }}
                         >
-                            Book a Scoping Call
-                            <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                        </button>
+                            Three disciplines.
+                            <br />
+                            <span className="text-white/20 italic font-serif font-normal">One standard of excellence.</span>
+                        </h1>
+                        <p className="text-white/45 text-xl md:text-2xl leading-relaxed font-light max-w-3xl">
+                            High-stakes engineering and advisory for institutions that demand precision. Our practice is focused, deep, and uncompromising — by design.
+                        </p>
                     </motion.div>
+                </div>
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-midnight to-transparent pointer-events-none" />
+            </section>
+
+            {/* Pillars */}
+            <section className="py-8 px-6">
+                <div className="max-w-7xl mx-auto space-y-6">
+                    {pillars.map((p, i) => (
+                        <motion.div
+                            key={p.number}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                        >
+                            <Link
+                                href={p.href}
+                                className={`group block p-10 md:p-12 rounded-3xl bg-white/[0.03] border border-white/[0.07] ${p.hover} transition-all`}
+                            >
+                                <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+                                    <div className="lg:w-1/2 space-y-5">
+                                        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest ${p.accent} ${p.color}`}>
+                                            <p.icon size={12} />
+                                            {p.label}
+                                        </div>
+                                        <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                                            {p.title}
+                                        </h2>
+                                        <p className="text-white/40 leading-relaxed font-light">{p.description}</p>
+                                        <div className="inline-flex items-center gap-2 text-sm font-semibold text-white/35 group-hover:text-white transition-colors uppercase tracking-widest">
+                                            Explore Pillar
+                                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                        </div>
+                                    </div>
+                                    <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        {p.capabilities.map((cap) => (
+                                            <div key={cap} className="px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-sm text-white/45 font-medium">
+                                                {cap}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    ))}
                 </div>
             </section>
 
-            {/* Services Grid */}
-            <section className="py-24 px-6 bg-neutral-bg">
-                <div className="max-w-7xl mx-auto">
-                    <div className="space-y-24">
-                        {services.map((service, idx) => (
+            {/* Methodology */}
+            <section className="py-32 px-6 mt-16 border-t border-white/[0.04] relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(59,130,246,0.04)_0%,_transparent_55%)] pointer-events-none" />
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-20"
+                    >
+                        <p className="text-xs font-bold text-gold-accent uppercase tracking-[0.25em] mb-6">How We Engage</p>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+                            Every engagement follows{" "}
+                            <span className="text-white/25 italic font-serif font-normal">the same rigour.</span>
+                        </h2>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05] rounded-3xl overflow-hidden">
+                        {steps.map((step, i) => (
                             <motion.div
-                                key={service.id}
-                                initial={{ opacity: 0, y: 40 }}
+                                key={step.number}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                id={service.id}
-                                className={cn(
-                                    "grid grid-cols-1 lg:grid-cols-2 gap-16 items-start scroll-mt-32",
-                                    idx % 2 !== 0 && "lg:flex-row-reverse"
-                                )}
+                                transition={{ delay: i * 0.12 }}
+                                className="bg-midnight p-10 flex flex-col"
                             >
-                                <div className={cn(idx % 2 !== 0 && "lg:order-2")}>
-                                    <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center text-electric-blue mb-8">
-                                        <service.icon size={32} />
-                                    </div>
-                                    <h2 className="text-4xl font-bold text-midnight mb-6 tracking-tight">
-                                        {service.title}
-                                    </h2>
-                                    <p className="text-lg text-midnight/60 leading-relaxed mb-10">
-                                        {service.description}
-                                    </p>
-
-                                    <div className="space-y-6">
-                                        <div>
-                                            <h4 className="text-sm font-bold text-midnight/40 uppercase tracking-widest mb-4">What you get</h4>
-                                            <ul className="grid grid-cols-1 gap-3">
-                                                {service.gets.map((item) => (
-                                                    <li key={item} className="flex items-center text-midnight font-medium">
-                                                        <CheckCircle2 size={18} className="text-emerald-500 mr-3 shrink-0" />
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className={cn(
-                                    "bg-white rounded-[3rem] p-10 shadow-sm border border-gray-100 flex flex-col space-y-8",
-                                    idx % 2 !== 0 && "lg:order-1"
-                                )}>
-                                    <div className="grid grid-cols-2 gap-8">
-                                        <div className="p-6 rounded-2xl bg-neutral-bg border border-gray-100">
-                                            <div className="flex items-center text-midnight/40 text-xs font-bold uppercase tracking-widest mb-2">
-                                                <Clock size={14} className="mr-2" />
-                                                Timeline
-                                            </div>
-                                            <p className="text-lg font-bold text-midnight">{service.timeline}</p>
-                                        </div>
-                                        <div className="p-6 rounded-2xl bg-neutral-bg border border-gray-100">
-                                            <div className="flex items-center text-midnight/40 text-xs font-bold uppercase tracking-widest mb-2">
-                                                <Users size={14} className="mr-2" />
-                                                Ideal For
-                                            </div>
-                                            <p className="text-lg font-bold text-midnight leading-tight">{service.idealFor}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-4">
-                                        <p className="text-sm text-midnight/50 italic">
-                                            "Interested in this service? Let's discuss your specific requirements and constraints."
-                                        </p>
-                                        <button
-                                            onClick={openBooking}
-                                            className="w-full bg-midnight text-white py-4 rounded-2xl font-bold hover:bg-midnight/90 transition-all flex items-center justify-center space-x-2"
-                                        >
-                                            <span>Request Details</span>
-                                            <ArrowRight size={18} />
-                                        </button>
-                                    </div>
-                                </div>
+                                <span className="text-5xl font-bold text-white/[0.06] font-serif mb-8 block">{step.number}</span>
+                                <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
+                                <p className="text-white/40 leading-relaxed font-light text-sm flex-1">{step.body}</p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <DisasterRecoveryCTA />
-
-            {/* Final Call Band */}
-            <section className="py-24 px-6 bg-white">
-                <div className="max-w-5xl mx-auto text-center">
-                    <h3 className="text-3xl md:text-5xl font-bold text-midnight mb-8 tracking-tight">
-                        Not sure where to start?
-                    </h3>
-                    <p className="text-lg text-midnight/60 mb-12 max-w-2xl mx-auto">
-                        Book a complimentary 30-minute discovery session. We'll help you map your challenges to the right technical intervention.
-                    </p>
-                    <button
-                        onClick={openBooking}
-                        className="bg-midnight text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl hover:translate-y-[-2px] transition-all"
+            {/* Who we work with */}
+            <section className="py-20 px-6 border-t border-white/[0.04]">
+                <div className="max-w-7xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col md:flex-row md:items-center gap-10"
                     >
-                        Book Discovery Session
-                    </button>
+                        <p className="text-xs font-bold text-white/25 uppercase tracking-[0.25em] shrink-0 md:w-40">
+                            Who we work with
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                            {sectors.map((s) => (
+                                <span key={s} className="px-5 py-2 rounded-full border border-white/[0.08] text-white/35 text-sm font-medium">
+                                    {s}
+                                </span>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
             </section>
+
+            <TDDSection />
+
+            <CTASection />
         </div>
     );
-}
-
-// Helper for conditional classes
-function cn(...classes: (string | boolean | undefined)[]) {
-    return classes.filter(Boolean).join(" ");
 }

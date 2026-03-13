@@ -11,7 +11,7 @@ export default function PrivacyPage() {
 
                         <section className="space-y-4">
                             <h2 className="text-2xl font-bold text-midnight">1. Data Controller</h2>
-                            <p>AVEL Africa, located in Kigali, Rwanda, is the data controller for the processing of your personal data as described in this policy. For any inquiries regarding your data, please contact copain@avel.africa.</p>
+                            <p>AVEL Africa, located in Kigali, Rwanda, is the data controller for the processing of your personal data as described in this policy. For any inquiries regarding your data, please contact contact@avel.africa.</p>
                         </section>
 
                         <section className="space-y-4">
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
                                 <li><strong>Right to Data Portability:</strong> Request transfer of your data to another service.</li>
                                 <li><strong>Right to Object:</strong> Object to processing of your data for specific purposes.</li>
                             </ul>
-                            <p>To exercise these rights, please contact us at <strong>copain@avel.africa</strong>.</p>
+                            <p>To exercise these rights, please contact us at <strong>contact@avel.africa</strong>.</p>
                         </section>
 
                         <section className="space-y-4">

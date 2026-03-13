@@ -43,7 +43,7 @@ export default function NotFound() {
                     </Link>
 
                     <a
-                        href="mailto:copain@avel.africa"
+                        href="mailto:contact@avel.africa"
                         className="w-full sm:w-auto flex items-center justify-center space-x-3 bg-white/5 text-white border border-white/10 px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all backdrop-blur-md"
                     >
                         <Mail size={20} />

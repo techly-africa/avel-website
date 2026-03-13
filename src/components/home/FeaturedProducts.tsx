@@ -39,14 +39,33 @@ const products = [
 ];
 
 export default function FeaturedProducts() {
+    const [content, setContent] = React.useState<any>(null);
+
+    React.useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const { contentService } = await import("@/services/contentService");
+                const data = await contentService.getContent('home_products');
+                if (data) setContent(data.data);
+            } catch (error) {
+                console.error("Products Fetch Error:", error);
+            }
+        };
+        fetchContent();
+    }, []);
+
+    const label = content?.label || "Innovation Engines";
+    const headline = content?.headline || "Modular products built on institutional knowledge.";
+    const items = content?.items || products.map(p => p.name);
+
     return (
         <section className="py-24 px-6 bg-neutral-bg">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="max-w-2xl">
-                        <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">Innovation Engines</h2>
-                        <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight">
-                            Modular products built on <br /> institutional knowledge.
+                        <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">{label}</h2>
+                        <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight whitespace-pre-line">
+                            {headline}
                         </h3>
                     </div>
                     <Link href="/products" className="group flex items-center text-sm font-bold text-midnight/40 hover:text-midnight transition-colors">

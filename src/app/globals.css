@@ -1,19 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #000000;
-  --midnight: #000000;
-  --electric-blue: #F58220;
-  --soft-teal: #F58220;
-  --neutral-bg: #F9FAFB;
+  --background: #0A0A0B;
+  --foreground: #F5F5F7;
+  --midnight: #0A0A0B;
+  --institutional-navy: #1A1C2E;
+  --slate-accent: #64748B;
+  --gold-accent: #D4AF37;
+  --neutral-bg: #0A0A0B;
 }
 
 @theme inline {
-  --color-midnight: #000000;
-  --color-electric-blue: #F58220;
-  --color-soft-teal: #F58220;
-  --color-neutral-bg: #F9FAFB;
+  --color-background: #0A0A0B;
+  --color-foreground: #F5F5F7;
+  --color-midnight: #0A0A0B;
+  --color-institutional-navy: #1A1C2E;
+  --color-slate-accent: #64748B;
+  --color-gold-accent: #D4AF37;
+  --color-neutral-bg: #0A0A0B;
 
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;
@@ -21,10 +25,11 @@
 
 @layer base {
   body {
-    @apply bg-neutral-bg text-midnight antialiased;
+    @apply bg-neutral-bg text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
+
 
 .glass {
   @apply bg-white/70 backdrop-blur-md border border-white/20;

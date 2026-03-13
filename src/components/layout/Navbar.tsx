@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -9,8 +9,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
     { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "GRC", href: "/grc" },
+    { name: "Products", href: "/products" },
     { name: "Insights", href: "/insights" },
     { name: "Contact", href: "/contact" },
 ];
@@ -34,7 +35,7 @@ export default function Navbar() {
                 <nav
                     className={cn(
                         "w-full max-w-7xl transition-all duration-700 pointer-events-auto",
-                        "bg-white/80 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] px-8 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)]",
+                        "bg-midnight/70 backdrop-blur-2xl border border-white/10 rounded-3xl px-8 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.3)]",
                         scrolled ? "mt-0" : "mt-2"
                     )}
                 >
@@ -45,27 +46,27 @@ export default function Navbar() {
                                 src="/avel_africa_logo_transparent.png"
                                 alt="AVEL Logo"
                                 className={cn(
-                                    "transition-all duration-500 object-contain drop-shadow-sm",
-                                    scrolled ? "h-9" : "h-11"
+                                    "transition-all duration-500 object-contain invert",
+                                    scrolled ? "h-8" : "h-10"
                                 )}
                             />
                         </Link>
 
-                        <div className="hidden lg:flex items-center space-x-8">
+                        <div className="hidden lg:flex items-center space-x-10">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     className={cn(
-                                        "text-sm font-bold transition-all relative group py-2",
+                                        "text-sm font-medium tracking-wide transition-all relative group py-2",
                                         pathname === link.href
-                                            ? "text-electric-blue"
-                                            : "text-midnight/90 hover:text-midnight hover:scale-105"
+                                            ? "text-gold-accent"
+                                            : "text-white/80 hover:text-white"
                                     )}
                                 >
                                     {link.name}
                                     <span className={cn(
-                                        "absolute bottom-0 left-0 w-0 h-0.5 bg-electric-blue transition-all duration-300 group-hover:w-full",
+                                        "absolute bottom-0 left-0 w-0 h-0.5 bg-gold-accent transition-all duration-300 group-hover:w-full",
                                         pathname === link.href && "w-full"
                                     )} />
                                 </Link>
@@ -76,18 +77,18 @@ export default function Navbar() {
                         <div className="hidden lg:block">
                             <button
                                 className={cn(
-                                    "px-6 py-2.5 rounded-2xl text-sm font-bold transition-all shadow-lg active:scale-95",
-                                    "bg-electric-blue text-midnight hover:bg-electric-blue/90 shadow-electric-blue/20"
+                                    "px-6 py-2 rounded-xl text-sm font-semibold transition-all shadow-lg active:scale-95",
+                                    "bg-white text-midnight hover:bg-white/90"
                                 )}
                                 onClick={() => window.dispatchEvent(new CustomEvent("open-booking"))}
                             >
-                                Schedule a Call
+                                Book Consultation
                             </button>
                         </div>
 
                         {/* Mobile Menu Toggle */}
                         <button
-                            className="lg:hidden p-2 text-midnight"
+                            className="lg:hidden p-2 text-white"
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -103,7 +104,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-24 left-4 right-4 bg-white shadow-2xl rounded-3xl border border-gray-100 lg:hidden overflow-hidden z-50 px-2 py-4"
+                        className="fixed top-24 left-4 right-4 bg-midnight border border-white/10 shadow-2xl rounded-3xl lg:hidden overflow-hidden z-50 px-2 py-4"
                     >
                         <div className="flex flex-col p-6 space-y-4">
                             {navLinks.map((link) => (
@@ -112,8 +113,8 @@ export default function Navbar() {
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
                                     className={cn(
-                                        "text-lg font-bold py-2 flex items-center justify-between",
-                                        pathname === link.href ? "text-electric-blue" : "text-midnight/70"
+                                        "text-lg font-medium py-2 flex items-center justify-between",
+                                        pathname === link.href ? "text-gold-accent" : "text-white/70"
                                     )}
                                 >
                                     {link.name}
@@ -121,13 +122,13 @@ export default function Navbar() {
                                 </Link>
                             ))}
                             <button
-                                className="w-full bg-midnight text-white py-4 rounded-2xl font-bold shadow-lg mt-4 active:scale-[0.98] transition-transform"
+                                className="w-full bg-white text-midnight py-4 rounded-2xl font-bold mt-4 active:scale-[0.98] transition-transform"
                                 onClick={() => {
                                     setIsOpen(false);
                                     window.dispatchEvent(new CustomEvent("open-booking"));
                                 }}
                             >
-                                Schedule a Call
+                                Book Consultation
                             </button>
                         </div>
                     </motion.div>

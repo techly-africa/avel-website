@@ -1,3 +1,5 @@
+import { supabase } from '@/lib/supabase';
+
 export interface Lead {
     id: string;
     type: "contact" | "booking" | "grc_assessment" | "demo_request" | "waitlist" | "partnership";
@@ -8,36 +10,63 @@ export interface Lead {
     industry?: string;
     message?: string;
     data?: any;
-    timestamp: string;
+    created_at?: string;
 }
 
 export const leadService = {
-    saveLead: async (leadData: Omit<Lead, "id" | "timestamp">): Promise<void> => {
-        // Simulate API latency
-        await new Promise(resolve => setTimeout(resolve, 1500));
+    async saveLead(leadData: Omit<Lead, "id" | "created_at">): Promise<void> {
+        const { error } = await supabase
+            .from('leads')
+            .insert([leadData]);
 
+        if (error) {
+            console.error("Supabase Lead Insertion Error:", error);
+            // Fallback for user experience if DB is not ready
+            this.saveLeadFallback(leadData);
+            throw error;
+        }
+
+        console.log("Lead Routing: Sent to Supabase and contact@avel.africa");
+    },
+
+    // Retain fallback to localStorage for resilience
+    saveLeadFallback(leadData: Omit<Lead, "id" | "created_at">) {
         if (typeof window === "undefined") return;
 
-        const lead: Lead = {
+        const lead = {
             ...leadData,
             id: Math.random().toString(36).substring(2, 11),
-            timestamp: new Date().toISOString(),
+            created_at: new Date().toISOString(),
         };
 
         const existingLeads = JSON.parse(localStorage.getItem("avel_leads") || "[]");
         localStorage.setItem("avel_leads", JSON.stringify([lead, ...existingLeads]));
-
-        // In a real production environment, this would trigger an email to copain@avel.africa
-        console.log("Lead Routing: Sent to copain@avel.africa", lead);
     },
 
-    getLeads: (): Lead[] => {
-        if (typeof window === "undefined") return [];
-        return JSON.parse(localStorage.getItem("avel_leads") || "[]");
+    async getLeads(): Promise<Lead[]> {
+        const { data, error } = await supabase
+            .from('leads')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            console.error("Supabase Fetch Leads Error:", error);
+            // Return from localStorage as fallback
+            if (typeof window !== "undefined") {
+                return JSON.parse(localStorage.getItem("avel_leads") || "[]");
+            }
+            return [];
+        }
+
+        return data as Lead[];
     },
 
-    clearLeads: () => {
-        if (typeof window === "undefined") return;
-        localStorage.removeItem("avel_leads");
+    async deleteLead(id: string) {
+        const { error } = await supabase
+            .from('leads')
+            .delete()
+            .eq('id', id);
+
+        if (error) throw error;
     }
 };

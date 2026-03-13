@@ -1,214 +1,172 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { leadService, Lead } from "@/services/leadService";
+import React, { useEffect, useState } from "react";
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow
-} from "@/components/ui/table";
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-    CardDescription
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-    Download,
-    Trash2,
-    ExternalLink,
-    Filter,
-    RefreshCw,
     Search,
-    Inbox
+    Trash2,
+    Mail,
+    Phone,
+    Building2,
+    Calendar,
+    ChevronDown,
+    Filter,
+    Loader2
 } from "lucide-react";
+import { leadService, Lead } from "@/services/leadService";
 
 export default function AdminLeadsPage() {
     const [leads, setLeads] = useState<Lead[]>([]);
+    const [searchQuery, setSearchQuery] = useState("");
     const [loading, setLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState("");
-
-    const refreshLeads = () => {
-        setLoading(true);
-        const data = leadService.getLeads();
-        setLeads(data);
-        setLoading(false);
-    };
+    const [filter, setFilter] = useState("all");
 
     useEffect(() => {
-        refreshLeads();
+        fetchLeads();
     }, []);
 
-    const clearAll = () => {
-        if (confirm("Are you sure you want to clear all leads? This cannot be undone.")) {
-            leadService.clearLeads();
-            refreshLeads();
+    const fetchLeads = async () => {
+        setLoading(true);
+        try {
+            const data = await leadService.getLeads();
+            setLeads(data);
+        } catch (error: any) {
+            console.error("Leads Fetch Error:", error?.message || error);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const downloadCSV = () => {
-        if (leads.length === 0) return;
-
-        const headers = ["ID", "Type", "Name", "Email", "Company", "Role", "Industry", "Timestamp", "Message"];
-        const csvContent = [
-            headers.join(","),
-            ...leads.map(l => [
-                l.id,
-                l.type,
-                `"${l.name}"`,
-                l.email,
-                `"${l.company || ""}"`,
-                `"${l.role || ""}"`,
-                `"${l.industry || ""}"`,
-                l.timestamp,
-                `"${(l.message || "").replace(/"/g, '""')}"`
-            ].join(","))
-        ].join("\n");
-
-        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", `avel_leads_${new Date().toISOString().split('T')[0]}.csv`);
-        link.style.visibility = "hidden";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-
-    const filteredLeads = leads.filter(l =>
-        l.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        l.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (l.company && l.company.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-
-    const getTypeColor = (type: string) => {
-        switch (type) {
-            case "grc_assessment": return "bg-purple-100 text-purple-700";
-            case "booking": return "bg-blue-100 text-blue-700";
-            case "demo_request": return "bg-emerald-100 text-emerald-700";
-            case "contact": return "bg-gray-100 text-gray-700";
-            default: return "bg-neutral-100 text-neutral-700";
+    const handleDelete = async (id: string) => {
+        if (confirm("Are you sure you want to delete this inquiry?")) {
+            await leadService.deleteLead(id);
+            fetchLeads();
         }
     };
+
+    const filteredLeads = leads.filter(l => {
+        const matchesSearch =
+            l.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            l.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            l.company?.toLowerCase().includes(searchQuery.toLowerCase());
+
+        const matchesFilter = filter === "all" || l.type === filter;
+
+        return matchesSearch && matchesFilter;
+    });
 
     return (
-        <div className="min-h-screen bg-gray-50 p-8">
-            <div className="max-w-7xl mx-auto space-y-8">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h1 className="text-3xl font-bold text-midnight tracking-tight">Lead Command Center</h1>
-                        <p className="text-midnight/50">Manage inquiries, assessments, and growth signals for AVEL.</p>
+        <div className="space-y-12">
+            <div className="flex justify-between items-end">
+                <div>
+                    <h2 className="text-4xl font-bold tracking-tight text-white">Institutional Inbound</h2>
+                    <p className="text-white/60 text-sm mt-4 font-medium max-w-xl leading-relaxed">Systematic archive of institutional inquiries, project bookings, and capability assessments.</p>
+                </div>
+            </div>
+
+            <div className="bg-white rounded-[3.5rem] border border-gray-100 shadow-2xl shadow-midnight/5 overflow-hidden">
+                <div className="px-12 py-10 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-8 bg-neutral-bg/20">
+                    <div className="relative flex-1 max-w-xl group">
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-institutional-navy/20 group-focus-within:text-institutional-navy transition-all" size={20} />
+                        <input
+                            type="text"
+                            placeholder="Filter intelligence streams..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full pl-16 pr-8 py-5 bg-white border-2 border-transparent rounded-2xl text-sm font-medium focus:border-institutional-navy/10 focus:ring-0 transition-all outline-none shadow-sm"
+                        />
                     </div>
-                    <div className="flex items-center space-x-3">
-                        <Button variant="outline" onClick={refreshLeads} className="bg-white">
-                            <RefreshCw className="mr-2 h-4 w-4" />
-                            Sync
-                        </Button>
-                        <Button variant="outline" onClick={downloadCSV} disabled={leads.length === 0} className="bg-white">
-                            <Download className="mr-2 h-4 w-4" />
-                            Export CSV
-                        </Button>
-                        <Button variant="destructive" onClick={clearAll} disabled={leads.length === 0}>
-                            <Trash2 className="mr-2 h-4 w-4" />
-                            Clear
-                        </Button>
+                    <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-3 bg-white px-6 py-5 rounded-2xl shadow-sm border-2 border-transparent">
+                            <Filter size={18} className="text-institutional-navy/40" />
+                            <select
+                                value={filter}
+                                onChange={(e) => setFilter(e.target.value)}
+                                className="bg-transparent border-none text-sm font-bold text-institutional-navy focus:ring-0 appearance-none pr-8 cursor-pointer outline-none"
+                            >
+                                <option value="all">Global Matrix</option>
+                                <option value="contact">Contact Intake</option>
+                                <option value="booking">Product Booking</option>
+                                <option value="grc_assessment">Security Assessment</option>
+                                <option value="demo_request">Institutional Demo</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <Card className="border-none shadow-sm overflow-hidden">
-                    <CardHeader className="bg-white border-b border-gray-100 py-6">
-                        <div className="flex items-center justify-between">
-                            <div className="relative w-full max-w-md">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                                <input
-                                    type="text"
-                                    placeholder="Search leads by name, email, or company..."
-                                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-lg text-sm focus:ring-2 focus:ring-midnight outline-none transition-all"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <Badge variant="secondary" className="bg-midnight/5 text-midnight">
-                                    {filteredLeads.length} Lead{filteredLeads.length !== 1 ? 's' : ''}
-                                </Badge>
+                <div className="divide-y divide-gray-50">
+                    {loading ? (
+                        <div className="p-32 text-center">
+                            <Loader2 className="animate-spin text-institutional-navy/20 mx-auto" size={40} />
+                        </div>
+                    ) : filteredLeads.map((lead) => (
+                        <div key={lead.id} className="px-12 py-10 hover:bg-neutral-bg/20 transition-all duration-300 group">
+                            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-10">
+                                <div className="space-y-8 flex-1">
+                                    <div className="flex items-center space-x-6">
+                                        <div className="w-16 h-16 bg-institutional-navy text-white rounded-[1.5rem] flex items-center justify-center font-bold text-2xl shadow-xl shadow-institutional-navy/10 border border-white/10">
+                                            {lead.name[0]}
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-2xl text-institutional-navy tracking-tight">{lead.name}</h4>
+                                            <div className="flex items-center space-x-6 text-[10px] text-midnight/30 mt-2 font-black uppercase tracking-widest">
+                                                <span className="flex items-center px-4 py-1.5 rounded-full bg-institutional-navy/5 text-institutional-navy border border-institutional-navy/5">
+                                                    {lead.type.replace('_', ' ')}
+                                                </span>
+                                                <span className="flex items-center">
+                                                    <Calendar size={14} className="mr-2" />
+                                                    {new Date(lead.created_at || "").toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ml-2">
+                                        <div className="flex items-center space-x-4 group/item">
+                                            <div className="p-2.5 bg-neutral-bg rounded-xl text-institutional-navy/40 group-hover/item:text-institutional-navy transition-colors">
+                                                <Mail size={18} />
+                                            </div>
+                                            <span className="text-sm font-medium text-institutional-navy/70 leading-none">{lead.email}</span>
+                                        </div>
+                                        {lead.company && (
+                                            <div className="flex items-center space-x-4 group/item">
+                                                <div className="p-2.5 bg-neutral-bg rounded-xl text-institutional-navy/40 group-hover/item:text-institutional-navy transition-colors">
+                                                    <Building2 size={18} />
+                                                </div>
+                                                <span className="text-sm font-medium text-institutional-navy/70 leading-none">{lead.company}</span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {lead.message && (
+                                        <div className="bg-neutral-bg/50 p-8 rounded-[2rem] text-base text-institutional-navy/80 leading-relaxed font-serif italic border border-white relative">
+                                            <div className="absolute top-0 left-8 -translate-y-1/2 bg-white px-3 text-gold-accent font-black text-2xl font-serif">“</div>
+                                            {lead.message}
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="flex lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-6 shrink-0 pt-2">
+                                    <button
+                                        onClick={() => handleDelete(lead.id)}
+                                        className="p-5 text-red-500/30 hover:text-red-500 hover:bg-red-50 rounded-[1.5rem] transition-all border border-transparent hover:border-red-100"
+                                        title="Purge Intelligence"
+                                    >
+                                        <Trash2 size={24} />
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </CardHeader>
-                    <CardContent className="p-0 bg-white min-h-[400px]">
-                        {filteredLeads.length > 0 ? (
-                            <div className="overflow-x-auto">
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow className="bg-gray-50/50 hover:bg-gray-50/50">
-                                            <TableHead className="font-bold text-midnight/70">Source</TableHead>
-                                            <TableHead className="font-bold text-midnight/70">Entity / Person</TableHead>
-                                            <TableHead className="font-bold text-midnight/70">Context</TableHead>
-                                            <TableHead className="font-bold text-midnight/70">Message</TableHead>
-                                            <TableHead className="font-bold text-midnight/70 text-right">Received</TableHead>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {filteredLeads.map((lead) => (
-                                            <TableRow key={lead.id} className="cursor-default hover:bg-gray-50/30 transition-colors">
-                                                <TableCell>
-                                                    <Badge className={cn("capitalize px-2 py-0.5 text-[10px] font-black border-none shadow-none", getTypeColor(lead.type))}>
-                                                        {lead.type.replace("_", " ")}
-                                                    </Badge>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <div className="flex flex-col">
-                                                        <span className="font-bold text-midnight">{lead.name}</span>
-                                                        <span className="text-xs text-midnight/40">{lead.email}</span>
-                                                    </div>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <div className="flex flex-col text-sm">
-                                                        <span className="font-medium text-midnight/80">{lead.company || "N/A"}</span>
-                                                        <span className="text-xs text-midnight/40">{lead.role || lead.industry || ""}</span>
-                                                    </div>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <p className="text-xs text-midnight/60 max-w-[300px] line-clamp-2">
-                                                        {lead.message || <span className="italic opacity-30">No message provided</span>}
-                                                    </p>
-                                                </TableCell>
-                                                <TableCell className="text-right">
-                                                    <span className="text-xs font-medium text-midnight/50">
-                                                        {new Date(lead.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                                                    </span>
-                                                </TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
+                    ))}
+                    {!loading && filteredLeads.length === 0 && (
+                        <div className="p-32 text-center space-y-6">
+                            <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto text-white/10">
+                                <Search size={40} />
                             </div>
-                        ) : (
-                            <div className="flex flex-col items-center justify-center py-32 text-center">
-                                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 mb-4">
-                                    <Inbox size={32} />
-                                </div>
-                                <h3 className="text-lg font-bold text-midnight">No leads found</h3>
-                                <p className="text-sm text-midnight/40 max-w-xs">
-                                    {searchTerm ? "No leads match your search criteria. Try a different term." : "Wait for growth signals to appear here after users interact with forms."}
-                                </p>
-                            </div>
-                        )}
-                    </CardContent>
-                </Card>
+                            <p className="text-white/40 text-sm font-medium italic font-serif">Awaiting institutional inbound streams.</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
-}
-
-// Minimalistic cn helper if not present
-function cn(...inputs: any[]) {
-    return inputs.filter(Boolean).join(" ");
 }
