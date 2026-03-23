@@ -38,11 +38,11 @@ export default function Hero() {
                     className="font-bold text-white tracking-tight leading-[0.9] mb-10 max-w-5xl"
                     style={{ fontSize: "clamp(3.5rem, 9vw, 7.5rem)" }}
                 >
-                    Engineering
+                    AI, Demystified
                     <br />
-                    <span className="text-white/20 italic font-serif font-normal">Institutional</span>
+                    <span className="text-white/20 italic font-serif font-normal">for African</span>
                     <br />
-                    Resilience.
+                    Business.
                 </motion.h1>
 
                 {/* Sub + CTAs */}
@@ -53,7 +53,7 @@ export default function Hero() {
                         transition={{ duration: 0.7, delay: 0.25 }}
                         className="text-white/45 text-xl md:text-2xl leading-relaxed font-light max-w-xl"
                     >
-                        High-stakes product development, security governance, and digital sovereignty advisory for Africa&apos;s most critical organizations.
+                        We help African businesses understand, secure, and deploy Artificial Intelligence. Skip the hype and the jargon—we focus on introducing and embedding AI in your daily workflows for real results, without ever risking your data.
                     </motion.p>
 
                     <motion.div
@@ -66,7 +66,7 @@ export default function Hero() {
                             onClick={() => window.dispatchEvent(new CustomEvent("open-booking"))}
                             className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-midnight font-bold rounded-2xl hover:bg-gold-accent transition-all hover:shadow-[0_20px_40px_rgba(212,175,55,0.25)] active:scale-95"
                         >
-                            Book a Consultation
+                            Book an AI Readiness Audit
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                         <Link
@@ -86,9 +86,9 @@ export default function Hero() {
                     className="mt-24 pt-10 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-3 gap-10"
                 >
                     {[
-                        { value: "3", label: "Service Pillars" },
-                        { value: "GRC", label: "Governance & Compliance" },
-                        { value: "Sovereign", label: "Digital Independence" },
+                        { value: "AWS", label: "Official Partner" },
+                        { value: "AI", label: "Enterprise Transformation" },
+                        { value: "GRC", label: "Security & Sovereignty" },
                     ].map((stat) => (
                         <div key={stat.label}>
                             <div className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">

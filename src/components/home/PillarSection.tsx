@@ -3,30 +3,30 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Search, Cpu, ArrowRight } from "lucide-react";
+import { Shield, Brain, Cpu, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const pillars = [
     {
-        title: "Product Development & Digital Product Advisory",
-        description: "Architecting institutional-grade products with mission-critical integrity. We move founders from vision to resilient reality.",
-        icon: Cpu,
+        title: "Enterprise AI Transformation",
+        description: "Positioning institutions at the forefront of the AI era. As an Official AWS Partner, we lead the strategic deployment of AWS, Anthropic, and GCP intelligence ecosystems.",
+        icon: Brain,
         href: "/services/product-advisory",
         color: "text-blue-400",
     },
     {
-        title: "GRC, Audit & Security Advisory",
-        description: "Safeguarding trust through tactical governance. Ensuring global security standards and local compliance excellence.",
+        title: "Product Engineering",
+        description: "Architecting institutional-grade digital assets. Moving visionary applications from concept to mission-critical reality.",
+        icon: Cpu,
+        href: "/services/product-advisory",
+        color: "text-white",
+    },
+    {
+        title: "Security, GRC & Forensics",
+        description: "Safeguarding your digital sovereignty. Comprehensive governance, audit, and security advisory for the AI-driven enterprise.",
         icon: Shield,
         href: "/services/grc-security",
         color: "text-emerald-400",
-    },
-    {
-        title: "Digital Forensics & Digital Sovereignty Advisory",
-        description: "Own your data. Secure your truth. Expert analysis and strategy for digital investigations and asset ownership.",
-        icon: Search,
-        href: "/services/forensics-sovereignty",
-        color: "text-amber-400",
     },
 ];
 

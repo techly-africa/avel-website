@@ -18,18 +18,17 @@ export const metadata: Metadata = {
     template: "%s | AVEL Africa",
   },
   description:
-    "AVEL Africa builds and secures mission-critical digital infrastructure for Africa's most demanding institutions. GRC advisory, product engineering, and digital forensics.",
+    "AVEL Africa empowers Africa's most demanding institutions to embrace the AI era. Enterprise intelligence ecosystems (Anthropic, AWS, GCP) secured by institutional-grade governance.",
   keywords: [
+    "Enterprise AI Africa",
+    "AI Transformation Africa",
+    "Anthropic partner Africa",
+    "AWS AI integration",
+    "GCP cloud intelligence",
     "institutional technology Africa",
     "GRC consulting Rwanda",
-    "digital engineering Africa",
-    "cybersecurity advisory Africa",
-    "digital forensics Africa",
-    "product advisory Africa",
-    "ISO 27001 consulting",
-    "NIST compliance Africa",
     "digital sovereignty",
-    "software development Rwanda",
+    "cybersecurity advisory Africa",
     "Kigali technology firm",
     "AVEL Africa",
   ],
@@ -48,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "AVEL Africa",
     title: "AVEL Africa — Institutional Digital Engineering",
     description:
-      "AVEL Africa builds and secures mission-critical digital infrastructure for Africa's most demanding institutions. GRC advisory, product engineering, and digital forensics.",
+      "AVEL Africa empowers Africa's most demanding institutions to embrace the AI era. Enterprise intelligence ecosystems (Anthropic, AWS, GCP) secured by institutional-grade governance.",
     images: [
       {
         url: "/avel_africa_horizontal.png",
@@ -64,7 +63,7 @@ export const metadata: Metadata = {
     creator: "@AvelAfrica",
     title: "AVEL Africa — Institutional Digital Engineering",
     description:
-      "AVEL Africa builds and secures mission-critical digital infrastructure for Africa's most demanding institutions.",
+      "AVEL Africa empowers Africa's most demanding institutions to embrace the AI era.",
     images: ["/avel_africa_horizontal.png"],
   },
   alternates: {
@@ -79,7 +78,7 @@ const organizationSchema = {
   url: "https://avel.africa",
   logo: "https://avel.africa/avel_africa_logo_transparent.png",
   description:
-    "Institutional digital engineering firm providing GRC advisory, product engineering, and digital forensics for Africa's most demanding institutions.",
+    "Institutional digital engineering firm providing AI transformation, product engineering, and GRC security advisory for Africa's most demanding institutions.",
   foundingLocation: { "@type": "Place", name: "Kigali, Rwanda" },
   contactPoint: {
     "@type": "ContactPoint",

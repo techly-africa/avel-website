@@ -5,42 +5,47 @@ import Link from "next/link";
 import { ArrowRight, Shield, Lock, Layers } from "lucide-react";
 import Hero from "@/components/home/Hero";
 import PillarSection from "@/components/home/PillarSection";
-import TDDSection from "@/components/home/TDDSection";
+import AISolutionsSection from "@/components/home/AISolutionsSection";
 import CTASection from "@/components/home/CTASection";
 
 const values = [
     {
         icon: Layers,
-        title: "Digital Sovereignty",
-        body: "We ensure organizations maintain absolute ownership and control over their digital assets, data, and infrastructure — no compromises.",
+        title: "Enterprise AI Competence",
+        body: "We bridge the gap between AI ambition and execution, specializing in Anthropic, AWS, and GCP integrations tailored for rigorous institutional environments.",
     },
     {
         icon: Shield,
-        title: "Institutional Integrity",
-        body: "Every engagement is held to the highest standards of engineering rigor and governance, because the stakes demand it.",
+        title: "Digital Sovereignty & GRC",
+        body: "We ensure you maintain absolute ownership over your data ecosystems and AI pipelines — no compromises on security, compliance, or integrity.",
     },
     {
         icon: Lock,
-        title: "Product Excellence",
-        body: "We don't build apps. We architect resilient institutional assets designed to endure and evolve with your mission.",
+        title: "Institutional Engineering",
+        body: "We don't build apps. We architect resilient, intelligent enterprise assets designed to endure and evolve with your mission-critical operations.",
     },
 ];
 
 const steps = [
     {
         number: "01",
-        title: "Diagnosis",
-        body: "Rigorous technical and strategic assessment of your systems, risks, and requirements before a single line of code is written.",
+        title: "Explore",
+        body: "AI Readiness & Strategic Roadmaps. We run rigorous data audits to ensure your systems and institutional compliance are prepared for enterprise intelligence.",
     },
     {
         number: "02",
-        title: "Architecture",
-        body: "Design of resilient foundations that prioritize both velocity and integrity — built to carry institutional weight.",
+        title: "Build",
+        body: "Mission-Critical AI Systems. We architect secure, proprietary Copilots and RAG pipelines designed for strict enterprise-grade environments.",
     },
     {
         number: "03",
-        title: "Delivery",
-        body: "Uncompromising engineering execution with continuous oversight, ensuring what ships matches what was promised.",
+        title: "Ship",
+        body: "Secure AWS & GCP Deployment. Highly available infrastructure deployment built to scale without sacrificing data sovereignty or performance.",
+    },
+    {
+        number: "04",
+        title: "Support",
+        body: "GRC & Continuous Monitoring. Uncompromising ongoing oversight to prevent model drift and ensure strict alignment with organizational and regional regulations.",
     },
 ];
 
@@ -53,10 +58,10 @@ export default function Home() {
             <PillarSection />
 
             {/* Why AVEL */}
-            <section className="py-32 px-6 relative overflow-hidden">
+            <section className="fluid-y-padding relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.04)_0%,_transparent_60%)] pointer-events-none" />
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+                <div className="fluid-container relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
                         {/* Left: copy */}
                         <motion.div
@@ -64,19 +69,19 @@ export default function Home() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <p className="text-xs font-bold text-gold-accent uppercase tracking-[0.25em] mb-6">
+                            <p className="text-xs font-bold text-gold-accent uppercase tracking-[0.25em] mb-4 sm:mb-6">
                                 Why AVEL
                             </p>
-                            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 sm:mb-8">
                                 We are not a software agency.
                                 <br />
                                 <span className="text-white/30 italic font-serif font-normal">We are principal engineers.</span>
                             </h2>
                             <p className="text-white/50 text-lg leading-relaxed font-light mb-6">
-                                AVEL Africa was built for organizations where failure is not an option. We have sat in the rooms where critical infrastructure decisions are made — and we bring that weight to every engagement.
+                                AVEL Africa builds the foundation for tomorrow's intelligent enterprises. As an Official AWS Partner, and through cross-ecosystem alliances with Anthropic and GCP, we deploy rigorous, transformative AI solutions where failure is not an option.
                             </p>
                             <p className="text-white/35 text-base leading-relaxed font-light mb-10">
-                                Our work spans product architecture, security governance, and digital forensics — disciplines that demand precision, discretion, and institutional-grade accountability.
+                                From architecting complex intelligence ecosystems to enforcing strict data sovereignty and digital forensics, we deliver with precision, discretion, and strict institutional governance.
                             </p>
                             <Link
                                 href="/about"
@@ -113,25 +118,25 @@ export default function Home() {
             </section>
 
             {/* Methodology */}
-            <section className="py-32 px-6 border-t border-white/[0.04] relative overflow-hidden">
+            <section className="fluid-y-padding border-t border-white/[0.04] relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(59,130,246,0.04)_0%,_transparent_60%)] pointer-events-none" />
-                <div className="max-w-7xl mx-auto relative z-10">
+                <div className="fluid-container relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="mb-20"
                     >
-                        <p className="text-xs font-bold text-gold-accent uppercase tracking-[0.25em] mb-6">
+                        <p className="text-xs font-bold text-gold-accent uppercase tracking-[0.25em] mb-4 sm:mb-6">
                             Our Methodology
                         </p>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-2xl">
                             Deliberate by design.{" "}
                             <span className="text-white/25 italic font-serif font-normal">Precise in execution.</span>
                         </h2>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05] rounded-3xl overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05] rounded-2xl sm:rounded-[2rem] overflow-hidden">
                         {steps.map((step, i) => (
                             <motion.div
                                 key={step.number}
@@ -139,9 +144,9 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.12 }}
-                                className="bg-midnight p-10 flex flex-col"
+                                className="bg-midnight p-8 sm:p-10 flex flex-col"
                             >
-                                <span className="text-5xl font-bold text-white/[0.06] font-serif mb-8 block">
+                                <span className="text-4xl sm:text-5xl font-bold text-white/[0.06] font-serif mb-6 sm:mb-8 block">
                                     {step.number}
                                 </span>
                                 <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
@@ -152,7 +157,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <TDDSection />
+            <AISolutionsSection />
 
             <CTASection />
         </div>

@@ -6,35 +6,60 @@
   --midnight: #0A0A0B;
   --institutional-navy: #1A1C2E;
   --slate-accent: #64748B;
-  --gold-accent: #D4AF37;
+  --gold-accent: #f97316;
   --neutral-bg: #0A0A0B;
 }
 
 @theme inline {
   --color-background: #0A0A0B;
   --color-foreground: #F5F5F7;
+  
+  /* Core Brand Colors */
   --color-midnight: #0A0A0B;
   --color-institutional-navy: #1A1C2E;
+  --color-gold-accent: #f97316;
+  --color-gold-accent-light: #fb923c;
+  --color-electric-blue: #f97316;
+  --color-electric-blue-light: #fb923c;
+  
+  /* Accents & Neutrals */
   --color-slate-accent: #64748B;
-  --color-gold-accent: #D4AF37;
   --color-neutral-bg: #0A0A0B;
+  --color-neutral-surface: #111113;
 
+  /* Enhanced Radii */
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
 }
 
 @layer base {
   body {
-    @apply bg-neutral-bg text-foreground antialiased;
+    @apply bg-neutral-bg text-foreground antialiased selection:bg-gold-accent selection:text-midnight;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
+/* Fluid Layout Helpers */
+@layer utilities {
+  .fluid-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .fluid-y-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
 
+/* Premium Glassmorphism */
 .glass {
-  @apply bg-white/70 backdrop-blur-md border border-white/20;
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)];
 }
 
 .glass-dark {
-  @apply bg-midnight/80 backdrop-blur-lg border border-white/10;
+  @apply bg-midnight/60 backdrop-blur-2xl border border-white/5 shadow-2xl;
+}
+
+.glass-panel {
+  @apply bg-institutional-navy/40 backdrop-blur-lg border border-white/5 shadow-xl;
 }

@@ -35,9 +35,9 @@ export default function AdminContentPage() {
                     { key: 'about_values', data: { items: ["Digital Sovereignty", "Institutional Integrity", "Product Excellence"] } },
                     { key: 'about_story', data: { title: "Our Story", content: "We don't operate like a generic software agency. We are principal engineers and strategic advisors." } },
                     { key: 'services_hero', data: { headline: "Strategic Capabilities.", subheadline: "High-stakes engineering and advisory for a resilient digital future." } },
-                    { key: 'services_methodology', data: { title: "Our Methodology", steps: ["Diagnosis", "Architecture", "Delivery"] } },
+                    { key: 'services_methodology', data: { title: "Our Methodology", steps: ["Explore", "Build", "Ship", "Support"] } },
                     { key: 'home_products', data: { label: "Innovation Engines", headline: "Modular products built on institutional knowledge.", items: ["AVEL Projects", "AVEL Varsity", "Rwanda Blockchain Initiative"] } },
-                    { key: 'home_services', data: { label: "Core Capabilities", headline: "Specialized engineering for high-trust ecosystems.", items: ["Technology Risk Diagnosis", "Product & Solution Design", "GRC as a Service", "Security Engineering", "Integration & API Engineering", "Data & Reconciliation"] } },
+                    { key: 'home_services', data: { label: "Core Capabilities", headline: "Specialized engineering for high-trust ecosystems.", items: ["AI Readiness Exploration", "Enterprise AI & RAG Systems", "GRC & Sovereignty", "AWS Cloud Infrastructure", "Integration & API Engineering", "Intelligence Operations"] } },
                     { key: 'footer_config', data: { intro: "Engineering Digital Resilience & Sovereignty. Trusted advisory for institutional excellence.", location: "Kigali, Rwanda", email: "contact@avel.africa" } }
                 ];
                 setContents(defaults as any);

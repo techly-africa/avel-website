@@ -8,23 +8,23 @@ import CTASection from "@/components/home/CTASection";
 const strengths = [
     {
         icon: BrainCircuit,
-        title: "Principal-Level Expertise",
-        body: "Every engagement is led by senior engineers and advisors — not managed by account managers and staffed with juniors. You get direct access to the best minds on the problem.",
+        title: "AI Translators & Architects",
+        body: "We don't just write code; we demystify the technology. Every engagement is led by principal engineers who translate complex Agentic behaviors into clear business ROI for your executive team.",
     },
     {
         icon: ShieldCheck,
-        title: "Institutional-Grade Standards",
-        body: "We apply the same rigour used in banking, telecom, and public sector to every client — regardless of size. Our bar does not move.",
+        title: "Radical Data Sovereignty",
+        body: "African institutions can't afford data leakage. We architect private, secure Generative AI and RAG pipelines that operate entirely within your controlled local infrastructure.",
     },
     {
         icon: Globe2,
         title: "Deep Continental Context",
-        body: "We understand Africa's regulatory environments, infrastructure realities, and institutional dynamics. Our solutions are built for the continent — not repurposed for it.",
+        body: "We understand Africa's regulatory environments, strict compliance laws, and institutional dynamics. Our Sovereign AI models are built for the continent—not repurposed for it.",
     },
     {
         icon: Users,
-        title: "Mission-Aligned Partnership",
-        body: "We don't take on every client. We work with founders and institutions whose mission demands the highest standards, and we commit to those partnerships fully.",
+        title: "Principal-Led Execution",
+        body: "We don't sell generic SaaS products or push vendor lock-in. We are your dedicated engineering partners, embedding cutting-edge MCP solutions directly into your daily workflows.",
     },
 ];
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
                             <span className="text-white/20 italic font-serif font-normal">failure is not an option.</span>
                         </h1>
                         <p className="text-white/45 text-xl md:text-2xl leading-relaxed font-light max-w-3xl">
-                            AVEL Africa was founded to close a gap in the continent&apos;s digital ecosystem — the absence of principal-level engineering advisory that understands both Africa&apos;s unique technical landscape and global institutional standards.
+                            AVEL Africa was founded to close a critical gap in the continent's digital ecosystem: the absence of trusted technical partners capable of demystifying, securing, and integrating advanced Artificial Intelligence into daily African workflows.
                         </p>
                     </motion.div>
                 </div>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                     >
                         {[
                             { label: "Service Pillars", value: "3" },
-                            { label: "Core Disciplines", value: "GRC · Forensics · Product" },
+                            { label: "Core Disciplines", value: "AI Strategy · RAG & MCP · GRC" },
                             { label: "Operating Standard", value: "Institutional" },
                             { label: "Geography", value: "Pan-Africa" },
                         ].map((item, i) => (

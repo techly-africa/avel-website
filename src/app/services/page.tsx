@@ -2,46 +2,46 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Cpu, Shield, Search } from "lucide-react";
-import TDDSection from "@/components/home/TDDSection";
+import { ArrowRight, Cpu, Shield, Brain } from "lucide-react";
+import AISolutionsSection from "@/components/home/AISolutionsSection";
 import CTASection from "@/components/home/CTASection";
 
 const pillars = [
     {
         number: "01",
-        icon: Cpu,
+        icon: Brain,
         color: "text-blue-400",
         accent: "bg-blue-500/10 border-blue-500/20",
         hover: "hover:border-blue-400/30",
         label: "Strategic Pillar 01",
-        title: "Product Development & Digital Product Advisory",
-        description: "We architect products that scale with mission-critical integrity. From concept to resilient reality — built for institutions that cannot afford technical debt.",
-        capabilities: ["MVP Architecture & Strategy", "Institutional Systems Design", "Agile Product Advisory", "Technical Due Diligence"],
-        href: "/services/product-advisory",
+        title: "Enterprise AI Transformation",
+        description: "Positioning institutions at the forefront of the AI era. As an Official AWS Partner, we lead the strategic deployment of AWS, Anthropic, and GCP intelligence ecosystems.",
+        capabilities: ["Generative AI Integration", "AWS Cloud Architecture", "Anthropic/GCP Ecosystems", "AI Governance"],
+        href: "/services/ai-transformation",
     },
     {
         number: "02",
+        icon: Cpu,
+        color: "text-white",
+        accent: "bg-white/10 border-white/20",
+        hover: "hover:border-white/30",
+        label: "Strategic Pillar 02",
+        title: "Product Engineering",
+        description: "Architecting institutional-grade digital assets. Moving visionary applications from concept to mission-critical reality.",
+        capabilities: ["Bespoke Software Engineering", "Mission-Critical Systems", "Scalable Architectures", "Technical Diligence"],
+        href: "/services/product-advisory",
+    },
+    {
+        number: "03",
         icon: Shield,
         color: "text-emerald-400",
         accent: "bg-emerald-500/10 border-emerald-500/20",
         hover: "hover:border-emerald-400/30",
-        label: "Strategic Pillar 02",
-        title: "GRC, Audit & Security Advisory",
-        description: "Safeguarding institutional trust through rigorous governance. We design frameworks that meet global standards while operating in African regulatory environments.",
-        capabilities: ["Security Audits & Vulnerability Assessment", "GRC Framework Design", "ISO/NIST Alignment", "Continuous Monitoring Strategy"],
-        href: "/services/grc-security",
-    },
-    {
-        number: "03",
-        icon: Search,
-        color: "text-amber-400",
-        accent: "bg-amber-500/10 border-amber-500/20",
-        hover: "hover:border-amber-400/30",
         label: "Strategic Pillar 03",
-        title: "Digital Forensics & Digital Sovereignty Advisory",
-        description: "Own your data. Secure your truth. Expert investigation and strategic advisory for organizations asserting full control over their digital assets.",
-        capabilities: ["Deep-Dive Digital Forensics", "Data Asset Sovereignty Advisory", "Incident Response & Recovery", "Secure Architecture Audits"],
-        href: "/services/forensics-sovereignty",
+        title: "Security, GRC & Forensics",
+        description: "Safeguarding your digital sovereignty. Comprehensive governance, audit, and security advisory for the AI-driven enterprise.",
+        capabilities: ["ISO/NIST Alignment", "Data Asset Sovereignty", "Deep-Dive Forensics", "Continuous Monitoring Strategy"],
+        href: "/services/grc-security",
     },
 ];
 
@@ -50,18 +50,23 @@ const sectors = ["Telecom", "Fintech", "Public Sector", "Banking", "Mobility", "
 const steps = [
     {
         number: "01",
-        title: "Diagnosis",
-        body: "We begin every engagement with a rigorous technical and strategic assessment — understanding your systems, risks, and requirements before committing a direction.",
+        title: "Explore",
+        body: "AI Readiness & Strategic Roadmaps. We begin by assessing your data maturity, mapping out high-ROI AI opportunities while securing strict data sovereignty.",
     },
     {
         number: "02",
-        title: "Architecture",
-        body: "We design solutions that balance velocity with institutional integrity. Every architecture decision is documented, justified, and built to carry real weight.",
+        title: "Build",
+        body: "Mission-Critical AI Systems. We architect resilient GenAI workflows, custom RAG systems, and data pipelines built on robust AWS and Anthropic infrastructure.",
     },
     {
         number: "03",
-        title: "Delivery",
-        body: "Uncompromising execution with continuous oversight. We remain engaged through delivery, ensuring what ships matches what was promised — without shortcuts.",
+        title: "Ship",
+        body: "Secure Execution. We deploy highly available intelligence ecosystems into production, ensuring what ships can handle real-world scale without compliance risks.",
+    },
+    {
+        number: "04",
+        title: "Support",
+        body: "Continuous GRC & Monitoring. Our advisory continues post-launch, securing your models against drift, hallucinations, and evolving regulatory frameworks.",
     },
 ];
 
@@ -153,7 +158,7 @@ export default function ServicesPage() {
                         </h2>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05] rounded-3xl overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05] rounded-3xl overflow-hidden">
                         {steps.map((step, i) => (
                             <motion.div
                                 key={step.number}
@@ -195,7 +200,7 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            <TDDSection />
+            <AISolutionsSection />
 
             <CTASection />
         </div>

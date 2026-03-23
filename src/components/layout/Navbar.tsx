@@ -11,7 +11,6 @@ const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Products", href: "/products" },
     { name: "Insights", href: "/insights" },
     { name: "Contact", href: "/contact" },
 ];
@@ -35,7 +34,7 @@ export default function Navbar() {
                 <nav
                     className={cn(
                         "w-full max-w-7xl transition-all duration-700 pointer-events-auto",
-                        "bg-midnight/70 backdrop-blur-2xl border border-white/10 rounded-3xl px-8 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.3)]",
+                        "glass-dark rounded-3xl px-6 md:px-8 py-3",
                         scrolled ? "mt-0" : "mt-2"
                     )}
                 >
@@ -52,7 +51,7 @@ export default function Navbar() {
                             />
                         </Link>
 
-                        <div className="hidden lg:flex items-center space-x-10">
+                        <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
@@ -88,8 +87,9 @@ export default function Navbar() {
 
                         {/* Mobile Menu Toggle */}
                         <button
-                            className="lg:hidden p-2 text-white"
+                            className="lg:hidden p-2 text-white active:scale-95 transition-transform"
                             onClick={() => setIsOpen(!isOpen)}
+                            aria-label="Toggle menu"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -104,25 +104,25 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-24 left-4 right-4 bg-midnight border border-white/10 shadow-2xl rounded-3xl lg:hidden overflow-hidden z-50 px-2 py-4"
+                        className="fixed top-24 left-4 right-4 glass-dark shadow-2xl rounded-3xl lg:hidden overflow-hidden z-50 p-2"
                     >
-                        <div className="flex flex-col p-6 space-y-4">
+                        <div className="flex flex-col p-4 sm:p-6 space-y-2 sm:space-y-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
                                     className={cn(
-                                        "text-lg font-medium py-2 flex items-center justify-between",
-                                        pathname === link.href ? "text-gold-accent" : "text-white/70"
+                                        "text-base sm:text-lg font-medium py-3 px-4 rounded-xl flex items-center justify-between transition-colors",
+                                        pathname === link.href ? "bg-white/5 text-gold-accent" : "text-white/80 hover:bg-white/5 hover:text-white"
                                     )}
                                 >
                                     {link.name}
-                                    <ChevronRight size={18} />
+                                    <ChevronRight size={18} className="opacity-50" />
                                 </Link>
                             ))}
                             <button
-                                className="w-full bg-white text-midnight py-4 rounded-2xl font-bold mt-4 active:scale-[0.98] transition-transform"
+                                className="w-full bg-white text-midnight py-4 rounded-xl font-bold mt-4 shadow-lg active:scale-[0.98] transition-transform"
                                 onClick={() => {
                                     setIsOpen(false);
                                     window.dispatchEvent(new CustomEvent("open-booking"));

@@ -15,17 +15,6 @@ const footerLinks = [
         ],
     },
     {
-        title: "Products",
-        links: [
-            { name: "Avel Commerce", href: "/products" },
-            { name: "Avel Business Suite", href: "/products" },
-            { name: "AvelDocs", href: "/products" },
-            { name: "Avalid", href: "/products" },
-            { name: "Avel Research", href: "/products" },
-            { name: "AvelGRC", href: "/products" },
-        ],
-    },
-    {
         title: "Company",
         links: [
             { name: "About Us", href: "/about" },
