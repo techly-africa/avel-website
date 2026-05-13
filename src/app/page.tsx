@@ -1,5 +1,3 @@
-"use client";
-
 import FoundingHero from "@/components/founding/FoundingHero";
 import FoundingProblem from "@/components/founding/FoundingProblem";
 import FoundingArchitecture from "@/components/founding/FoundingArchitecture";

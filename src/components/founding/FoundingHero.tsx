@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import AvelLogo from "@/components/ui/AvelLogo";
 import Link from "next/link";
