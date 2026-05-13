@@ -32,16 +32,17 @@ export default function FoundingHero() {
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-bold text-white leading-[0.9] tracking-tighter mb-12">
-            Engineering <br />
-            The Foundation.
+          <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-bold text-white leading-[0.9] tracking-tighter mb-12">
+            Running a business <br />
+            in Africa should never <br />
+            be this hard.
           </h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end w-full">
           <p className="text-xl md:text-2xl text-white/40 max-w-xl font-medium leading-relaxed">
-            We are building the infrastructure layer African businesses have been waiting for.
-            Payments intelligence, business identity, and connectivity — built for African reality.
+            AVEL is building the layer that makes it easier to get online, 
+            understand your data, collect payments, and reach your customers.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6">
