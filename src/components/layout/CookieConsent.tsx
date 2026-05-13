@@ -42,7 +42,7 @@ export default function CookieConsent() {
                         <div className="flex-1 text-center md:text-left">
                             <h3 className="text-lg font-bold text-midnight mb-1">Cookie Preferences</h3>
                             <p className="text-sm text-midnight/60 leading-relaxed">
-                                We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Read our <Link href="/privacy" className="text-electric-blue hover:underline">Privacy Policy</Link>.
+                                We use cookies to enhance your experience and analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of cookies. Read our <Link href="/privacy" className="text-electric-blue hover:underline">Privacy Policy</Link>.
                             </p>
                         </div>
 
