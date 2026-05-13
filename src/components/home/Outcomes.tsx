@@ -1,60 +1,57 @@
+"use client";
+
 import React from "react";
-import { CheckCircle2, TrendingUp, ShieldCheck, Activity } from "lucide-react";
+import { motion } from "framer-motion";
 
 const outcomes = [
-    {
-        title: "Reduced Rework",
-        metric: "40% reduction",
-        description: "Architecture-grade specifications ensure builds match requirements the first time, saving months of expensive drift.",
-        icon: Activity,
-    },
-    {
-        title: "Audit Readiness",
-        metric: "Continuous",
-        description: "Compliance controls are mapped early, providing evidence logs that make audits a non-event for regulators.",
-        icon: ShieldCheck,
-    },
-    {
-        title: "Operational Clarity",
-        metric: "100% visibility",
-        description: "Monitoring, reconciliation, and SLA tracking built for teams that manage critical national-scale infrastructure.",
-        icon: TrendingUp,
-    },
+  {
+    title: "Know your cash position. Always.",
+    elaboration: "Real-time reconciliation and cash flow forecasting across every channel you use.",
+    tag: "Flow",
+  },
+  {
+    title: "Prove your business to any institution. Instantly.",
+    elaboration: "A portable, verifiable credit and identity profile that travels with your business.",
+    tag: "Entity",
+  },
+  {
+    title: "Integrate every payment rail. Once.",
+    elaboration: "Momo, Card, Bank, and USSD normalized into a single, high-performance API.",
+    tag: "Flow",
+  },
+  {
+    title: "Operate on any network. Reliably.",
+    elaboration: "USSD and SMS fallbacks ensure your business stays alive even when the internet doesn't.",
+    tag: "Core",
+  }
 ];
 
 export default function Outcomes() {
-    return (
-        <section className="py-24 bg-midnight text-white px-6 overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white rounded-full animate-pulse" />
-            </div>
-
-            <div className="max-w-7xl mx-auto relative">
-                <div className="text-center mb-20">
-                    <h2 className="text-sm font-bold text-soft-teal uppercase tracking-widest mb-4 font-mono">Measurable Impact</h2>
-                    <h3 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Built for outcomes that matter.</h3>
-                    <p className="text-white/60 text-lg max-w-2xl mx-auto">
-                        We don't just deliver software. We deliver stability, compliance, and predictable operations for high-stakes environments.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {outcomes.map((outcome) => (
-                        <div key={outcome.title} className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all">
-                            <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-soft-teal group-hover:text-midnight transition-colors">
-                                <outcome.icon size={24} />
-                            </div>
-                            <div className="text-soft-teal font-black text-2xl mb-4 tracking-tighter">
-                                {outcome.metric}
-                            </div>
-                            <h4 className="text-2xl font-bold mb-4">{outcome.title}</h4>
-                            <p className="text-white/50 leading-relaxed italic">
-                                "{outcome.description}"
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="fluid-y-padding bg-white">
+      <div className="fluid-container">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32">
+          {outcomes.map((outcome, i) => (
+            <motion.div
+              key={outcome.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.8 }}
+            >
+              <div className="inline-block px-3 py-1 rounded bg-orange/5 text-[10px] font-bold uppercase tracking-[0.2em] text-orange mb-8">
+                {outcome.tag}
+              </div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] mb-8">
+                {outcome.title}
+              </h2>
+              <p className="text-xl text-charcoal/50 leading-relaxed max-w-lg">
+                {outcome.elaboration}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

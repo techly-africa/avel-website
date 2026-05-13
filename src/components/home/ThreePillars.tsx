@@ -2,92 +2,91 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Search, Code2, ShieldAlert, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, Activity, Fingerprint, Network } from "lucide-react";
 
-const pillars = [
-    {
-        title: "Product & Technology Advisory",
-        description: "Aligning product strategy with technical feasibility and regulatory requirements before a single line of code is written.",
-        icon: Search,
-        color: "bg-electric-blue/5 text-electric-blue",
-        href: "/services",
-    },
-    {
-        title: "Engineering Delivery & Integrations",
-        description: "High-spec implementation of core systems, payment rails, and multi-tenant platforms with audit-ready traceability.",
-        icon: Code2,
-        color: "bg-midnight/5 text-midnight",
-        href: "/services",
-    },
-    {
-        title: "GRC as a Service",
-        description: "Continuous compliance and risk governance integrated into the delivery lifecycle. No surprises, no policy drift.",
-        icon: ShieldAlert,
-        color: "bg-electric-blue/5 text-electric-blue",
-        href: "/grc",
-    },
+const products = [
+  {
+    name: "AVEL Flow",
+    accent: "orange",
+    color: "#F97316",
+    icon: Activity,
+    tagline: "One integration. Every payment rail. Complete financial intelligence.",
+    description: "Built on normalized transaction data across MTN MoMo, Airtel Money, IremboPay, and bank rails.",
+    href: "/products/flow",
+    stats: "Private Alpha"
+  },
+  {
+    name: "AVEL Entity",
+    accent: "entity",
+    color: "#0D9488",
+    icon: Fingerprint,
+    tagline: "Your business identity. Sovereign. Verifiable. Portable.",
+    description: "Blockchain-anchored verification ensures every credential is tamper-proof and business-owned.",
+    href: "/products/entity",
+    stats: "Conceptual"
+  },
+  {
+    name: "AVEL Core",
+    accent: "core",
+    color: "#64748B",
+    icon: Network,
+    tagline: "The infrastructure that keeps everything running — on any network.",
+    description: "AI-driven event bus with SMS, USSD, and voice as first-class data channels for offline resilience.",
+    href: "/products/core",
+    stats: "Architecting"
+  }
 ];
 
 export default function ThreePillars() {
-    const [content, setContent] = React.useState<any>(null);
+  return (
+    <section className="fluid-y-padding bg-off-white">
+      <div className="fluid-container">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {products.map((product, i) => (
+            <motion.div
+              key={product.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="group flex flex-col p-10 bg-white border-2 border-charcoal/5 rounded-2xl hover:border-orange/20 transition-all duration-500"
+            >
+              <div 
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-10 transition-colors duration-500"
+                style={{ backgroundColor: `${product.color}10`, color: product.color }}
+              >
+                <product.icon size={28} strokeWidth={1.5} />
+              </div>
 
-    React.useEffect(() => {
-        const fetchContent = async () => {
-            try {
-                const data = await import("@/services/contentService").then(m => m.contentService.getContent('home_pillars'));
-                if (data) setContent(data.data);
-            } catch (error) {
-                console.error("Pillars Fetch Error:", error);
-            }
-        };
-        fetchContent();
-    }, []);
-
-    const label = content?.label || "Our Foundation";
-    const headline = content?.headline || "Comprehensive delivery for modern organizations.";
-    const items = content?.items || pillars.map(p => p.title);
-
-    return (
-        <section className="py-24 px-6">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-16">
-                    <h2 className="text-sm font-bold text-electric-blue uppercase tracking-widest mb-4">{label}</h2>
-                    <h3 className="text-4xl md:text-5xl font-bold text-midnight tracking-tight whitespace-pre-line">
-                        {headline}
-                    </h3>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-2xl font-bold tracking-tight">{product.name}</h3>
+                  <span className="px-2 py-0.5 rounded bg-charcoal/5 text-[8px] font-bold uppercase tracking-widest text-charcoal/40">
+                    {product.stats}
+                  </span>
                 </div>
+                
+                <p className="text-lg font-bold leading-tight mb-4 text-charcoal/80">
+                  {product.tagline}
+                </p>
+                
+                <p className="text-sm text-charcoal/50 leading-relaxed mb-10">
+                  {product.description}
+                </p>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {pillars.map((pillar, index) => (
-                        <motion.div
-                            key={pillar.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group p-8 bg-white border border-gray-100 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all cursor-default"
-                        >
-                            <div className={`w-14 h-14 ${pillar.color} rounded-2xl flex items-center justify-center mb-6`}>
-                                <pillar.icon size={28} />
-                            </div>
-                            <h4 className="text-2xl font-bold text-midnight mb-4 leading-tight">
-                                {pillar.title}
-                            </h4>
-                            <p className="text-midnight/60 leading-relaxed mb-8">
-                                {pillar.description}
-                            </p>
-                            <Link
-                                href={pillar.href}
-                                className="inline-flex items-center text-sm font-bold text-midnight group-hover:text-electric-blue transition-colors"
-                            >
-                                Learn more
-                                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+              <Link
+                href={product.href}
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-charcoal hover:text-orange transition-colors"
+              >
+                Learn More
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

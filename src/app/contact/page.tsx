@@ -67,7 +67,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-bold text-white mb-2">Phone</h4>
-                                        <a href="tel:+250799904601" className="text-white/40 font-light hover:text-white transition-colors">+250 799 904 601</a>
+                                        <a href="tel:+250799903601" className="text-white/40 font-light hover:text-white transition-colors">+250 799 903 601</a>
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-6">

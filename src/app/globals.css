@@ -1,65 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0A0A0B;
-  --foreground: #F5F5F7;
-  --midnight: #0A0A0B;
-  --institutional-navy: #1A1C2E;
-  --slate-accent: #64748B;
-  --gold-accent: #f97316;
-  --neutral-bg: #0A0A0B;
+  --background: #FFFFFF;
+  --foreground: #1C1C1C;
+  --charcoal: #1C1C1C;
+  --orange: #F97316;
+  --off-white: #F9F6F1;
+  --white: #FFFFFF;
+  
+  /* Product Accents */
+  --flow-accent: #F97316;
+  --entity-accent: #0D9488;
+  --core-accent: #64748B;
 }
 
 @theme inline {
-  --color-background: #0A0A0B;
-  --color-foreground: #F5F5F7;
+  --color-charcoal: #1C1C1C;
+  --color-orange: #F97316;
+  --color-off-white: #F9F6F1;
+  --color-white: #FFFFFF;
   
-  /* Core Brand Colors */
-  --color-midnight: #0A0A0B;
-  --color-institutional-navy: #1A1C2E;
-  --color-gold-accent: #f97316;
-  --color-gold-accent-light: #fb923c;
-  --color-electric-blue: #f97316;
-  --color-electric-blue-light: #fb923c;
-  
-  /* Accents & Neutrals */
-  --color-slate-accent: #64748B;
-  --color-neutral-bg: #0A0A0B;
-  --color-neutral-surface: #111113;
+  --color-flow: #F97316;
+  --color-entity: #0D9488;
+  --color-core: #64748B;
 
-  /* Enhanced Radii */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  
+  /* Infrastructure weight tokens */
+  --radius-none: 0px;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
-  --radius-3xl: 1.5rem;
-  --radius-4xl: 2rem;
 }
 
 @layer base {
   body {
-    @apply bg-neutral-bg text-foreground antialiased selection:bg-gold-accent selection:text-midnight;
+    @apply bg-white text-charcoal antialiased selection:bg-orange/20 selection:text-orange;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-charcoal;
   }
 }
 
-/* Fluid Layout Helpers */
 @layer utilities {
   .fluid-container {
-    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }
   
   .fluid-y-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-20 md:py-32 lg:py-40;
+  }
+
+  .text-infrastructure {
+    @apply font-bold tracking-tight uppercase text-xs;
   }
 }
 
-/* Premium Glassmorphism */
-.glass {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)];
+/* Premium Motion Containers */
+.motion-safe-scale {
+  @apply transition-transform duration-500 hover:scale-[1.02];
 }
 
-.glass-dark {
-  @apply bg-midnight/60 backdrop-blur-2xl border border-white/5 shadow-2xl;
+/* Infrastructure Borders */
+.border-infrastructure {
+  @apply border-2 border-charcoal/5;
 }
 
-.glass-panel {
-  @apply bg-institutional-navy/40 backdrop-blur-lg border border-white/5 shadow-xl;
+.bg-charcoal-gradient {
+  background: radial-gradient(circle at top right, #2C2C2C, #1C1C1C);
 }

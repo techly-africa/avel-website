@@ -14,23 +14,21 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://avel.africa"),
   title: {
-    default: "AVEL Africa — Institutional Digital Engineering",
+    default: "AVEL Africa — Building the Infrastructure for African Reality",
     template: "%s | AVEL Africa",
   },
   description:
-    "AVEL Africa empowers Africa's most demanding institutions to embrace the AI era. Enterprise intelligence ecosystems (Anthropic, AWS, GCP) secured by institutional-grade governance.",
+    "We are building the infrastructure layer African businesses have been waiting for. Payments intelligence, business identity, and connectivity — built for African reality.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   keywords: [
-    "Enterprise AI Africa",
-    "AI Transformation Africa",
-    "Anthropic partner Africa",
-    "AWS AI integration",
-    "GCP cloud intelligence",
-    "institutional technology Africa",
-    "GRC consulting Rwanda",
-    "digital sovereignty",
-    "cybersecurity advisory Africa",
-    "Kigali technology firm",
+    "African infrastructure",
+    "business identity",
+    "payments intelligence",
+    "Kigali technology",
     "AVEL Africa",
+    "data layer Africa",
   ],
   authors: [{ name: "AVEL Africa", url: "https://avel.africa" }],
   creator: "AVEL Africa",
@@ -45,15 +43,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://avel.africa",
     siteName: "AVEL Africa",
-    title: "AVEL Africa — Institutional Digital Engineering",
+    title: "AVEL Africa — Building the Infrastructure for African Reality",
     description:
-      "AVEL Africa empowers Africa's most demanding institutions to embrace the AI era. Enterprise intelligence ecosystems (Anthropic, AWS, GCP) secured by institutional-grade governance.",
+      "We are building the infrastructure layer African businesses have been waiting for. Payments intelligence, business identity, and connectivity — built from Kigali, Rwanda.",
     images: [
       {
         url: "/avel_africa_horizontal.png",
         width: 1200,
         height: 630,
-        alt: "AVEL Africa — Institutional Digital Engineering",
+        alt: "AVEL Africa — Building Infrastructure",
       },
     ],
   },
@@ -61,9 +59,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@AvelAfrica",
     creator: "@AvelAfrica",
-    title: "AVEL Africa — Institutional Digital Engineering",
+    title: "AVEL Africa — Building Infrastructure",
     description:
-      "AVEL Africa empowers Africa's most demanding institutions to embrace the AI era.",
+      "We are building the infrastructure layer African businesses have been waiting for.",
     images: ["/avel_africa_horizontal.png"],
   },
   alternates: {
@@ -76,13 +74,13 @@ const organizationSchema = {
   "@type": "Organization",
   name: "AVEL Africa",
   url: "https://avel.africa",
-  logo: "https://avel.africa/avel_africa_logo_transparent.png",
+  logo: "https://avel.africa/avel_logo.png",
   description:
-    "Institutional digital engineering firm providing AI transformation, product engineering, and GRC security advisory for Africa's most demanding institutions.",
+    "AVEL Africa is a team of builders and integrators creating the foundational infrastructure layer for African businesses.",
   foundingLocation: { "@type": "Place", name: "Kigali, Rwanda" },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+250799904601",
+    telephone: "+250799903601",
     email: "contact@avel.africa",
     contactType: "customer service",
   },
@@ -107,9 +105,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
-        <Navbar />
         <main>{children}</main>
-        <Footer />
         <BookingModal />
         <CookieConsent />
       </body>

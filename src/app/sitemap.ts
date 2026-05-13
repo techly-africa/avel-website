@@ -8,18 +8,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE,                                        lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
-    { url: `${BASE}/about`,                             lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE}/services`,                          lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE}/services/product-advisory`,         lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/services/grc-security`,             lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/services/forensics-sovereignty`,    lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/products`,                          lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/insights`,                          lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/case-studies`,                      lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/careers`,                           lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/contact`,                           lastModified: now, changeFrequency: "yearly",  priority: 0.7 },
-    { url: `${BASE}/privacy`,                           lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
-    { url: `${BASE}/terms`,                             lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
   ];
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
