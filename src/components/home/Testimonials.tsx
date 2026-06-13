@@ -30,7 +30,7 @@ export default function Testimonials() {
                         <div key={idx} className="p-10 rounded-[2.5rem] bg-neutral-bg border border-gray-100 relative group hover:bg-white hover:shadow-2xl transition-all">
                             <Quote className="text-electric-blue/20 absolute top-8 right-8" size={48} />
                             <p className="text-lg text-midnight/70 leading-relaxed mb-8 relative z-10 italic">
-                                "{t.quote}"
+                                &ldquo;{t.quote}&rdquo;
                             </p>
                             <div className="pt-8 border-t border-gray-200">
                                 <p className="text-sm font-bold text-midnight group-hover:text-electric-blue transition-colors tracking-tight">{t.role}</p>

@@ -9,7 +9,7 @@ export interface Lead {
     role?: string;
     industry?: string;
     message?: string;
-    data?: any;
+    data?: Record<string, unknown>;
     created_at?: string;
 }
 

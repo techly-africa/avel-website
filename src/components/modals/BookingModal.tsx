@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { X, CheckCircle2, ChevronRight, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { leadService } from "@/services/leadService";
 import Link from "next/link";
 
@@ -77,7 +76,7 @@ export default function BookingModal() {
                                 <div className="mb-8">
                                     <h2 className="text-3xl font-bold text-midnight mb-2">Schedule a Call</h2>
                                     <p className="text-midnight/60">
-                                        Let's discuss how AVEL can help you build and scale secure, compliant digital products.
+                                        Let&apos;s discuss how AVEL can help you build and scale secure, compliant digital products.
                                     </p>
                                 </div>
 
@@ -185,7 +184,7 @@ export default function BookingModal() {
                                 </div>
                                 <h2 className="text-3xl font-bold text-midnight mb-2">Request Received!</h2>
                                 <p className="text-midnight/60 max-w-sm mb-8">
-                                    Thank you for reaching out. We've received your request and will be in touch within 24 hours to schedule your call.
+                                    Thank you for reaching out. We&apos;ve received your request and will be in touch within 24 hours to schedule your call.
                                 </p>
                                 <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
                                     <motion.div

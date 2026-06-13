@@ -1,48 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #FFFFFF;
-  --foreground: #1C1C1C;
-  --charcoal: #1C1C1C;
-  --orange: #F97316;
-  --off-white: #F9F6F1;
-  --white: #FFFFFF;
-  
-  /* Product Accents */
-  --flow-accent: #F97316;
-  --entity-accent: #0D9488;
-  --core-accent: #64748B;
-}
+@theme {
+  --color-background: #050D18;
+  --color-surface: #0A192F;
+  --color-mid-navy: #133863;
+  --color-accent: #34B3E4;
+  --color-text-primary: #FFFFFF;
+  --color-text-muted: #8892A4;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
 
-@theme inline {
-  --color-charcoal: #1C1C1C;
-  --color-orange: #F97316;
-  --color-off-white: #F9F6F1;
-  --color-white: #FFFFFF;
-  
-  --color-flow: #F97316;
-  --color-entity: #0D9488;
-  --color-core: #64748B;
+  --color-midnight: #050D18;
+  --color-charcoal: #0A192F;
+  --color-electric-blue: #34B3E4;
+  --color-institutional-navy: #133863;
+  --color-neutral-bg: #F5F7FA;
+  --color-off-white: #F8FAFC;
+  --color-orange: #34B3E4;
+  --color-gold-accent: #34B3E4;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  
-  /* Infrastructure weight tokens */
-  --radius-none: 0px;
-  --radius-sm: 0.125rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
 @layer base {
   body {
-    @apply bg-white text-charcoal antialiased selection:bg-orange/20 selection:text-orange;
+    @apply bg-background text-text-primary antialiased selection:bg-accent/20 selection:text-accent font-sans;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-charcoal;
+    @apply font-display font-bold tracking-tight text-white;
   }
 }
 
@@ -55,21 +43,17 @@
     @apply py-20 md:py-32 lg:py-40;
   }
 
-  .text-infrastructure {
-    @apply font-bold tracking-tight uppercase text-xs;
+  /* Fade-in animation classes */
+  .reveal-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-}
 
-/* Premium Motion Containers */
-.motion-safe-scale {
-  @apply transition-transform duration-500 hover:scale-[1.02];
-}
-
-/* Infrastructure Borders */
-.border-infrastructure {
-  @apply border-2 border-charcoal/5;
-}
-
-.bg-charcoal-gradient {
-  background: radial-gradient(circle at top right, #2C2C2C, #1C1C1C);
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

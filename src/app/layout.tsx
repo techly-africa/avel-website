@@ -1,36 +1,54 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import BookingModal from "@/components/modals/BookingModal";
 import CookieConsent from "@/components/layout/CookieConsent";
 
-const inter = Inter({
-  variable: "--font-inter",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+});
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://avel.africa"),
   title: {
-    default: "AVEL Africa — Building the Infrastructure for African Reality",
-    template: "%s | AVEL Africa",
+    default: "AVEL — Sovereign infrastructure for African businesses",
+    template: "%s | AVEL",
   },
   description:
-    "We are building the infrastructure layer African businesses have been waiting for. Payments intelligence, business identity, and connectivity — built for African reality.",
+    "Compute, communication, records, and identity — owned in Africa, hosted in Africa, built for African businesses.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/favicon.png",
+        type: "image/png",
+        sizes: "772x611",
+      },
+    ],
   },
   keywords: [
-    "African infrastructure",
-    "business identity",
-    "payments intelligence",
+    "Sovereign infrastructure",
+    "African cloud hosting",
+    "business email Africa",
+    "document management Africa",
+    "business identity Africa",
     "Kigali technology",
     "AVEL Africa",
-    "data layer Africa",
+    "AvelCloud",
+    "AvelMail",
   ],
-  authors: [{ name: "AVEL Africa", url: "https://avel.africa" }],
-  creator: "AVEL Africa",
-  publisher: "AVEL Africa",
+  authors: [{ name: "AVEL", url: "https://avel.africa" }],
+  creator: "AVEL",
+  publisher: "AVEL",
   robots: {
     index: true,
     follow: true,
@@ -40,16 +58,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://avel.africa",
-    siteName: "AVEL Africa",
-    title: "AVEL Africa — Building the Infrastructure for African Reality",
+    siteName: "AVEL",
+    title: "AVEL — Sovereign infrastructure for African businesses",
     description:
-      "We are building the infrastructure layer African businesses have been waiting for. Payments intelligence, business identity, and connectivity — built from Kigali, Rwanda.",
+      "Compute, communication, records, and identity — owned in Africa, hosted in Africa, built for African businesses.",
     images: [
       {
-        url: "/avel_africa_horizontal.png",
-        width: 1200,
-        height: 630,
-        alt: "AVEL Africa — Building Infrastructure",
+        url: "/avel-new.png",
+        width: 2280,
+        height: 873,
+        alt: "AVEL — Sovereign Infrastructure",
       },
     ],
   },
@@ -57,10 +75,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@AvelAfrica",
     creator: "@AvelAfrica",
-    title: "AVEL Africa — Building Infrastructure",
+    title: "AVEL — Sovereign Infrastructure",
     description:
-      "We are building the infrastructure layer African businesses have been waiting for.",
-    images: ["/avel_africa_horizontal.png"],
+      "Compute, communication, records, and identity — owned in Africa, hosted in Africa, built for African businesses.",
+    images: ["/avel-new.png"],
   },
   alternates: {
     canonical: "https://avel.africa",
@@ -70,11 +88,11 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "AVEL Africa",
+  name: "AVEL",
   url: "https://avel.africa",
-  logo: "https://avel.africa/avel_logo.png",
+  logo: "https://avel.africa/avel-new.png",
   description:
-    "AVEL Africa is a team of builders and integrators creating the foundational infrastructure layer for African businesses.",
+    "AVEL is building sovereign digital infrastructure for African businesses — compute, communication, records, and identity owned and hosted in Africa.",
   foundingLocation: { "@type": "Place", name: "Kigali, Rwanda" },
   contactPoint: {
     "@type": "ContactPoint",
@@ -95,16 +113,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-text-primary`}
+        suppressHydrationWarning
+      >
         <main>{children}</main>
-        <BookingModal />
         <CookieConsent />
       </body>
     </html>

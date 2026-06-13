@@ -9,16 +9,17 @@ interface AvelLogoProps {
 
 export default function AvelLogo({ 
   className = "", 
-  size = 40,
-  light = false
+  size = 52
 }: AvelLogoProps) {
+  const width = Math.round(size * (2280 / 873));
+
   return (
-    <div className={`relative ${className}`} style={{ width: size * 4, height: size }}>
+    <div className={`relative ${className}`} style={{ width, height: size }}>
       <Image
-        src="/avel_africa_logo_transparent.png"
+        src="/avel-new.png"
         alt="AVEL Africa"
         fill
-        className={`object-contain ${light ? "invert brightness-0" : ""}`}
+        className="object-contain"
         priority
       />
     </div>

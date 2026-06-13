@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cookie, X } from "lucide-react";
+import { Cookie } from "lucide-react";
 import Link from "next/link";
 
 export default function CookieConsent() {
@@ -11,7 +11,8 @@ export default function CookieConsent() {
     useEffect(() => {
         const consent = localStorage.getItem("avel_cookie_consent");
         if (!consent) {
-            setIsVisible(true);
+            const timer = setTimeout(() => setIsVisible(true), 0);
+            return () => clearTimeout(timer);
         }
     }, []);
 

@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 export interface SiteContent {
     id: string;
     key: string;
-    data: any;
+    data: Record<string, string | string[]>;
     updated_at?: string;
 }
 
@@ -21,7 +21,7 @@ export const contentService = {
         return data as SiteContent | null;
     },
 
-    async updateContent(key: string, contentData: any) {
+    async updateContent(key: string, contentData: Record<string, unknown>) {
         const { data, error } = await supabase
             .from('site_content')
             .upsert({ key, data: contentData, updated_at: new Date().toISOString() }, { onConflict: 'key' })
