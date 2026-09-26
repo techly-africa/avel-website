@@ -21,11 +21,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://avel.africa"),
   title: {
-    default: "AVEL — Sovereign infrastructure for African businesses",
+    default: "AVEL — Technology Consultancy & Digital Solutions",
     template: "%s | AVEL",
   },
   description:
-    "Compute, communication, records, and identity — owned in Africa, hosted in Africa, built for African businesses.",
+    "Technology consultancy, independent tech audits, and digital solutions development for businesses and institutions across Africa.",
   icons: {
     icon: [
       {
@@ -36,15 +36,14 @@ export const metadata: Metadata = {
     ],
   },
   keywords: [
-    "Sovereign infrastructure",
-    "African cloud hosting",
-    "business email Africa",
-    "document management Africa",
-    "business identity Africa",
+    "Technology consultancy Africa",
+    "Technology audit",
+    "Digital solutions development",
+    "Software development Rwanda",
+    "Digital transformation consulting",
     "Kigali technology",
     "AVEL Africa",
-    "AvelCloud",
-    "AvelMail",
+    "Technology advisory Kigali",
   ],
   authors: [{ name: "AVEL", url: "https://avel.africa" }],
   creator: "AVEL",
@@ -59,15 +58,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://avel.africa",
     siteName: "AVEL",
-    title: "AVEL — Sovereign infrastructure for African businesses",
+    title: "AVEL — Technology Consultancy & Digital Solutions",
     description:
-      "Compute, communication, records, and identity — owned in Africa, hosted in Africa, built for African businesses.",
+      "Technology consultancy, independent tech audits, and digital solutions development for businesses and institutions across Africa.",
     images: [
       {
         url: "/avel-new.png",
         width: 2280,
         height: 873,
-        alt: "AVEL — Sovereign Infrastructure",
+        alt: "AVEL — Technology Consultancy & Digital Solutions",
       },
     ],
   },
@@ -75,9 +74,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@AvelAfrica",
     creator: "@AvelAfrica",
-    title: "AVEL — Sovereign Infrastructure",
+    title: "AVEL — Technology Consultancy & Digital Solutions",
     description:
-      "Compute, communication, records, and identity — owned in Africa, hosted in Africa, built for African businesses.",
+      "Technology consultancy, independent tech audits, and digital solutions development for businesses and institutions across Africa.",
     images: ["/avel-new.png"],
   },
   alternates: {
@@ -92,7 +91,7 @@ const organizationSchema = {
   url: "https://avel.africa",
   logo: "https://avel.africa/avel-new.png",
   description:
-    "AVEL is building sovereign digital infrastructure for African businesses — compute, communication, records, and identity owned and hosted in Africa.",
+    "AVEL provides technology consultancy, independent technology audits, and digital solutions development for organizations across Africa.",
   foundingLocation: { "@type": "Place", name: "Kigali, Rwanda" },
   contactPoint: {
     "@type": "ContactPoint",
