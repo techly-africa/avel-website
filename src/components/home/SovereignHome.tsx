@@ -2,26 +2,24 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, ChevronRight, ClipboardCheck, Code2, Mail, Menu, MessageSquare, Search, ShieldCheck, Sparkles, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Mail, Menu, MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import SculptureHero from "@/components/ui/liquid-sculpture-hero";
 
 const services = [
   {
-    icon: Sparkles,
     index: "01",
     title: "Tech Consultancy",
     description: "Clear technology direction for organizations making consequential decisions. We turn business priorities into practical roadmaps, architecture, and investment plans.",
     outcomes: ["Technology strategy", "Architecture advisory", "Digital transformation roadmaps"],
   },
   {
-    icon: ClipboardCheck,
     index: "02",
     title: "Tech Audit",
     description: "Independent assessment of your systems, security posture, delivery practices, and technical debt, with findings your leadership team can act on.",
     outcomes: ["Architecture and code review", "Security and risk assessment", "Actionable remediation plan"],
   },
   {
-    icon: Code2,
     index: "03",
     title: "Digital Solutions Development",
     description: "Purpose-built digital products and internal platforms designed around real workflows, delivered from discovery through launch and continuous improvement.",
@@ -121,121 +119,151 @@ export default function SovereignHome() {
       </AnimatePresence>
 
       <main>
-        <section className="relative overflow-hidden border-b border-border-subtle bg-white">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(19,56,99,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(19,56,99,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-          <div className="fluid-container relative grid min-h-[680px] items-center gap-14 py-20 lg:grid-cols-12 lg:py-28">
-            <div className="lg:col-span-7">
-              <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase text-mid-navy">
-                <span className="h-px w-8 bg-accent" /> Technology that advances the business
-              </motion.p>
-              <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="max-w-[760px] text-5xl font-bold leading-[1.02] text-text-primary sm:text-6xl lg:text-7xl">
-                Practical technology expertise, from decision to delivery.
-              </motion.h1>
-              <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16 }} className="mt-7 max-w-[650px] text-lg leading-8 text-text-muted sm:text-xl">
-                AVEL helps organizations make sound technology decisions, uncover risk, and build digital solutions that create measurable value.
-              </motion.p>
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.24 }} className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <button onClick={() => scrollTo("contact")} className="inline-flex items-center justify-center gap-2 rounded-md bg-mid-navy px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-text-primary">
-                  Discuss your project <ArrowRight className="h-4 w-4" />
-                </button>
-                <button onClick={() => scrollTo("services")} className="inline-flex items-center justify-center gap-2 rounded-md border border-border-subtle bg-white px-7 py-4 text-sm font-semibold text-text-primary transition-colors hover:border-mid-navy">
-                  Explore services <ChevronRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-            </div>
-            <div className="relative lg:col-span-5" aria-hidden="true">
-              <div className="relative mx-auto aspect-square max-w-[450px]">
-                <div className="absolute inset-[12%] rounded-full border border-mid-navy/15" />
-                <div className="absolute inset-[25%] rounded-full border border-mid-navy/20" />
-                <div className="absolute left-1/2 top-1/2 h-px w-[70%] -translate-x-1/2 -rotate-[28deg] bg-mid-navy/20" />
-                <div className="absolute left-1/2 top-1/2 h-px w-[70%] -translate-x-1/2 rotate-[34deg] bg-mid-navy/20" />
-                <div className="absolute left-1/2 top-1/2 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-mid-navy text-white shadow-[0_18px_45px_rgba(19,56,99,0.22)]"><Search className="h-9 w-9" /></div>
-                <div className="absolute left-[7%] top-[29%] grid h-14 w-14 place-items-center rounded-full border border-accent/30 bg-white text-mid-navy shadow-md"><Sparkles className="h-6 w-6" /></div>
-                <div className="absolute right-[6%] top-[35%] grid h-14 w-14 place-items-center rounded-full border border-accent/30 bg-white text-mid-navy shadow-md"><ClipboardCheck className="h-6 w-6" /></div>
-                <div className="absolute bottom-[5%] left-1/2 grid h-14 w-14 -translate-x-1/2 place-items-center rounded-full border border-accent/30 bg-white text-mid-navy shadow-md"><Code2 className="h-6 w-6" /></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SculptureHero
+          src="/avel-sculpture-hero.webp"
+          mobileSrc="/avel-sculpture-hero-mobile.webp"
+          imageAlt="Abstract metallic sculpture representing connected technology systems"
+          showNav={false}
+          eyebrow="Technology consultancy — Kigali, Rwanda"
+          headline={"Practical technology\nexpertise that delivers."}
+          headlineAccent="expertise that delivers."
+          body="We help organizations make sound technology decisions, uncover risk, and build digital solutions that create measurable value."
+          primaryCta={{ label: "Discuss your project", href: "#contact" }}
+          secondaryCta={{ label: "Explore services", href: "#services" }}
+          background="#F6F8FB"
+          darkBackground="#F6F8FB"
+          theme="light"
+          themeToggle={false}
+          textColor="#10233E"
+          accentColor="#34B3E4"
+          headingFont="var(--font-bricolage), system-ui, sans-serif"
+          accentFont="Georgia, 'Times New Roman', serif"
+          bodyFont="var(--font-geist-sans), system-ui, sans-serif"
+          loadFonts={false}
+          sculptureScale={0.92}
+          mobileSculptureScale={0.9}
+          particleDensity={0.8}
+          strength={0.85}
+          radius={190}
+          turbulence={0.8}
+          liquid={0.75}
+          returnSpeed={1.15}
+          intro
+          height="calc(100svh - 70px)"
+          backdropText="AVEL"
+          hint="Move across the form"
+          hintTouch="Touch the form"
+          showCredit={false}
+          className="border-b border-border-subtle"
+        />
 
-        <section id="services" className="scroll-mt-20 bg-neutral-bg py-24 lg:py-32">
+        <section id="services" className="scroll-mt-20 border-b border-border-subtle bg-neutral-bg py-24 lg:py-36">
           <div className="fluid-container">
-            <div className="mb-14 grid gap-6 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <p className="mb-4 text-xs font-semibold uppercase text-mid-navy">What we do</p>
-                <h2 className="text-4xl font-bold leading-tight text-text-primary sm:text-5xl">Three disciplines. One accountable partner.</h2>
+            <div className="grid gap-8 border-b border-border-subtle pb-14 lg:grid-cols-12 lg:items-end lg:pb-20">
+              <div className="lg:col-span-8">
+                <p className="mb-6 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted before:h-px before:w-7 before:bg-text-muted/60">What we do</p>
+                <h2 className="max-w-4xl text-5xl font-medium leading-[0.95] text-text-primary sm:text-6xl lg:text-7xl">
+                  Three disciplines.<br />
+                  <span className="font-serif font-normal italic text-accent">One accountable partner.</span>
+                </h2>
               </div>
-              <p className="max-w-[470px] text-base leading-7 text-text-muted lg:col-span-5 lg:justify-self-end">We meet organizations where they are: shaping direction, validating what already exists, or building what comes next.</p>
+              <p className="max-w-md text-base leading-7 text-text-muted lg:col-span-4 lg:justify-self-end">We meet organizations where they are: shaping direction, validating what already exists, or building what comes next.</p>
             </div>
-            <div className="grid gap-px overflow-hidden rounded-lg border border-border-subtle bg-border-subtle lg:grid-cols-3">
+
+            <div>
               {services.map((service) => (
-                <article key={service.title} className="group bg-white p-8 transition-colors hover:bg-[#F9FCFE] lg:p-10">
-                  <div className="mb-12 flex items-center justify-between">
-                    <div className="grid h-12 w-12 place-items-center rounded-md bg-accent/12 text-mid-navy"><service.icon className="h-6 w-6" /></div>
-                    <span className="font-mono text-xs text-text-muted">{service.index}</span>
+                <article key={service.title} className="group grid gap-7 border-b border-border-subtle py-10 transition-colors duration-200 hover:border-mid-navy sm:py-12 lg:grid-cols-12 lg:gap-10">
+                  <div className="flex items-start justify-between lg:col-span-1">
+                    <span className="font-mono text-xs text-accent">{service.index}</span>
+                    <ArrowUpRight className="h-5 w-5 text-text-muted transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent lg:hidden" />
                   </div>
-                  <h3 className="text-2xl font-bold text-text-primary">{service.title}</h3>
-                  <p className="mt-4 min-h-[112px] text-sm leading-7 text-text-muted">{service.description}</p>
-                  <ul className="mt-7 space-y-3 border-t border-border-subtle pt-6">
-                    {service.outcomes.map((outcome) => <li key={outcome} className="flex items-center gap-3 text-sm font-medium text-text-primary"><Check className="h-4 w-4 shrink-0 text-accent" />{outcome}</li>)}
-                  </ul>
+                  <h3 className="text-3xl font-medium leading-tight text-text-primary transition-colors duration-200 group-hover:text-mid-navy sm:text-4xl lg:col-span-4">{service.title}</h3>
+                  <p className="max-w-xl text-[15px] leading-7 text-text-muted lg:col-span-4">{service.description}</p>
+                  <div className="flex items-start justify-between gap-6 lg:col-span-3">
+                    <ul className="space-y-3">
+                      {service.outcomes.map((outcome) => <li key={outcome} className="flex items-start gap-3 text-sm font-medium text-text-primary"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />{outcome}</li>)}
+                    </ul>
+                    <ArrowUpRight className="hidden h-5 w-5 text-text-muted transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent lg:block" />
+                  </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="approach" className="scroll-mt-20 border-y border-border-subtle bg-white py-24 lg:py-32">
-          <div className="fluid-container grid gap-14 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <p className="mb-4 text-xs font-semibold uppercase text-mid-navy">How we work</p>
-              <h2 className="text-4xl font-bold leading-tight text-text-primary">Rigorous thinking. Visible progress.</h2>
-              <p className="mt-6 text-base leading-7 text-text-muted">Senior attention stays on the work from the first conversation through handover.</p>
+        <section id="approach" className="scroll-mt-20 border-b border-border-subtle bg-white py-24 lg:py-36">
+          <div className="fluid-container">
+            <div className="grid gap-10 lg:grid-cols-12">
+              <div className="lg:col-span-5">
+                <p className="mb-6 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted before:h-px before:w-7 before:bg-text-muted/60">How we work</p>
+                <h2 className="max-w-lg text-5xl font-medium leading-[0.95] text-text-primary sm:text-6xl">
+                  Rigorous thinking.<br />
+                  <span className="font-serif font-normal italic text-accent">Visible progress.</span>
+                </h2>
+              </div>
+              <p className="max-w-md self-end text-base leading-7 text-text-muted lg:col-span-4 lg:col-start-9">Senior attention stays on the work from the first conversation through handover.</p>
             </div>
-            <div className="lg:col-span-8">
-              {approach.map((step) => (
-                <div key={step.number} className="grid gap-4 border-t border-border-subtle py-7 sm:grid-cols-[64px_180px_1fr] sm:items-start">
-                  <span className="font-mono text-xs text-accent">{step.number}</span><h3 className="text-lg font-bold text-text-primary">{step.title}</h3><p className="text-sm leading-7 text-text-muted">{step.text}</p>
-                </div>
+
+            <div className="mt-16 grid border-y border-border-subtle sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+              {approach.map((step, index) => (
+                <article key={step.number} className={`min-h-[280px] py-8 sm:p-8 lg:min-h-[330px] lg:px-8 lg:py-10 ${index > 0 ? "border-t border-border-subtle sm:border-t-0 sm:border-l" : ""} ${index === 2 ? "sm:border-l-0 sm:border-t lg:border-l lg:border-t-0" : ""} ${index === 3 ? "sm:border-t lg:border-t-0" : ""}`}>
+                  <span className="font-mono text-xs text-accent">{step.number}</span>
+                  <div className="mt-20 lg:mt-28">
+                    <h3 className="text-2xl font-medium text-text-primary">{step.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-text-muted">{step.text}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="about" className="scroll-mt-20 border-b border-border-subtle bg-neutral-bg py-24 lg:py-32">
-          <div className="fluid-container grid gap-14 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-7">
-              <p className="mb-4 text-xs font-semibold uppercase text-accent">About AVEL</p>
-              <h2 className="max-w-[760px] text-4xl font-bold leading-tight text-text-primary sm:text-5xl">Local context, global engineering standards.</h2>
-              <p className="mt-7 max-w-[680px] text-lg leading-8 text-text-muted">AVEL is a Kigali-based technology consultancy working with ambitious businesses and institutions across Africa. We combine business understanding, technical depth, and disciplined delivery to solve problems that matter.</p>
-            </div>
-            <div className="border-l border-border-subtle pl-8 text-text-primary lg:col-span-5 lg:pl-12">
-              <div className="flex items-center gap-3 text-sm font-semibold"><ShieldCheck className="h-5 w-5 text-accent" />Independent advice</div>
-              <div className="mt-6 flex items-center gap-3 text-sm font-semibold"><ClipboardCheck className="h-5 w-5 text-accent" />Evidence-led decisions</div>
-              <div className="mt-6 flex items-center gap-3 text-sm font-semibold"><Code2 className="h-5 w-5 text-accent" />Solutions built to last</div>
+        <section id="about" className="relative scroll-mt-20 overflow-hidden border-b border-border-subtle bg-neutral-bg py-24 lg:py-36">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-10 text-center font-display text-[28vw] font-semibold leading-none text-text-primary/[0.025]">AFRICA</div>
+          <div className="fluid-container relative">
+            <div className="grid gap-14 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-8">
+                <p className="mb-6 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted before:h-px before:w-7 before:bg-text-muted/60">About AVEL</p>
+                <h2 className="max-w-4xl text-5xl font-medium leading-[0.96] text-text-primary sm:text-6xl lg:text-7xl">
+                  Local context,<br />
+                  <span className="font-serif font-normal italic text-accent">global engineering standards.</span>
+                </h2>
+                <p className="mt-10 max-w-2xl text-lg leading-8 text-text-muted">AVEL is a Kigali-based technology consultancy working with ambitious businesses and institutions across Africa. We combine business understanding, technical depth, and disciplined delivery to solve problems that matter.</p>
+              </div>
+              <div className="border-t border-border-subtle lg:col-span-3 lg:col-start-10">
+                {["Independent advice", "Evidence-led decisions", "Solutions built to last"].map((principle, index) => (
+                  <div key={principle} className="flex items-center gap-4 border-b border-border-subtle py-5 text-sm font-medium text-text-primary">
+                    <span className="font-mono text-[10px] text-accent">0{index + 1}</span>{principle}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-20 bg-white py-24 lg:py-32">
-          <div className="fluid-container grid gap-14 lg:grid-cols-12 lg:gap-20">
+        <section id="contact" className="relative scroll-mt-20 overflow-hidden bg-white py-24 lg:py-36">
+          <div className="fluid-container relative grid gap-16 lg:grid-cols-12 lg:gap-20">
             <div className="lg:col-span-5">
-              <p className="mb-4 text-xs font-semibold uppercase text-mid-navy">Start a conversation</p>
-              <h2 className="text-4xl font-bold leading-tight text-text-primary sm:text-5xl">What are you trying to move forward?</h2>
-              <p className="mt-6 text-base leading-7 text-text-muted">Share the decision, risk, or digital product on your desk. We will help you identify a practical next step.</p>
-              <div className="mt-10 space-y-4">
-                <a href="https://wa.me/250799903601" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-semibold text-text-primary hover:text-mid-navy"><MessageSquare className="h-5 w-5 text-accent" />+250 799 903 601</a>
-                <a href="mailto:contact@avel.africa" className="flex items-center gap-3 text-sm font-semibold text-text-primary hover:text-mid-navy"><Mail className="h-5 w-5 text-accent" />contact@avel.africa</a>
+              <p className="mb-6 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted before:h-px before:w-7 before:bg-text-muted/60">Start a conversation</p>
+              <h2 className="text-5xl font-medium leading-[0.96] text-text-primary sm:text-6xl">
+                What are you trying<br />
+                <span className="font-serif font-normal italic text-accent">to move forward?</span>
+              </h2>
+              <p className="mt-8 max-w-md text-base leading-7 text-text-muted">Share the decision, risk, or digital product on your desk. We will help you identify a practical next step.</p>
+              <div className="mt-12 border-t border-border-subtle">
+                <a href="https://wa.me/250799903601" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between border-b border-border-subtle py-5 text-sm font-medium text-text-primary transition-colors hover:text-mid-navy"><span className="flex items-center gap-3"><MessageSquare className="h-4 w-4 text-accent" />+250 799 903 601</span><ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
+                <a href="mailto:contact@avel.africa" className="group flex items-center justify-between border-b border-border-subtle py-5 text-sm font-medium text-text-primary transition-colors hover:text-mid-navy"><span className="flex items-center gap-3"><Mail className="h-4 w-4 text-accent" />contact@avel.africa</span><ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
               </div>
             </div>
-            <form onSubmit={handleFormSubmit} className="grid gap-5 border-t-2 border-mid-navy pt-8 lg:col-span-7">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="grid gap-2 text-xs font-semibold uppercase text-text-muted">Name<input name="name" value={formState.name} onChange={(event) => setFormState((state) => ({ ...state, name: event.target.value }))} className="h-12 rounded-md border border-border-subtle bg-white px-4 text-sm font-normal normal-case text-text-primary outline-none transition focus:border-mid-navy focus:ring-2 focus:ring-accent/20" required /></label>
-                <label className="grid gap-2 text-xs font-semibold uppercase text-text-muted">Work email<input type="email" name="email" value={formState.email} onChange={(event) => setFormState((state) => ({ ...state, email: event.target.value }))} className="h-12 rounded-md border border-border-subtle bg-white px-4 text-sm font-normal normal-case text-text-primary outline-none transition focus:border-mid-navy focus:ring-2 focus:ring-accent/20" required /></label>
+
+            <form onSubmit={handleFormSubmit} className="grid content-start gap-8 border-t border-text-primary pt-8 lg:col-span-7 lg:pt-10">
+              <div className="grid gap-8 sm:grid-cols-2">
+                <label className="grid gap-3 text-[11px] font-medium uppercase tracking-[0.12em] text-text-muted">Name<input name="name" value={formState.name} onChange={(event) => setFormState((state) => ({ ...state, name: event.target.value }))} className="h-12 border-0 border-b border-border-subtle bg-transparent px-0 text-base font-normal normal-case tracking-normal text-text-primary outline-none transition-colors duration-200 focus:border-accent" required /></label>
+                <label className="grid gap-3 text-[11px] font-medium uppercase tracking-[0.12em] text-text-muted">Work email<input type="email" name="email" value={formState.email} onChange={(event) => setFormState((state) => ({ ...state, email: event.target.value }))} className="h-12 border-0 border-b border-border-subtle bg-transparent px-0 text-base font-normal normal-case tracking-normal text-text-primary outline-none transition-colors duration-200 focus:border-accent" required /></label>
               </div>
-              <label className="grid gap-2 text-xs font-semibold uppercase text-text-muted">How can we help?<textarea name="message" rows={5} value={formState.message} onChange={(event) => setFormState((state) => ({ ...state, message: event.target.value }))} placeholder="Tell us about your objective, current challenge, or project." className="resize-none rounded-md border border-border-subtle bg-white px-4 py-3 text-sm font-normal normal-case leading-6 text-text-primary outline-none transition placeholder:text-text-muted/60 focus:border-mid-navy focus:ring-2 focus:ring-accent/20" required /></label>
-              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <button type="submit" disabled={formStatus === "submitting"} className="inline-flex min-w-[170px] items-center justify-center gap-2 rounded-md bg-mid-navy px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-text-primary disabled:opacity-60">{formStatus === "submitting" ? "Sending..." : "Send enquiry"}{formStatus !== "submitting" && <ArrowRight className="h-4 w-4" />}</button>
+              <label className="grid gap-3 text-[11px] font-medium uppercase tracking-[0.12em] text-text-muted">How can we help?<textarea name="message" rows={5} value={formState.message} onChange={(event) => setFormState((state) => ({ ...state, message: event.target.value }))} placeholder="Tell us about your objective, current challenge, or project." className="resize-none border-0 border-b border-border-subtle bg-transparent px-0 py-3 text-base font-normal normal-case leading-7 tracking-normal text-text-primary outline-none transition-colors duration-200 placeholder:text-text-muted/50 focus:border-accent" required /></label>
+              <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <button type="submit" disabled={formStatus === "submitting"} className="inline-flex h-12 min-w-[176px] items-center justify-center gap-3 rounded-full bg-text-primary px-6 text-sm font-medium text-white transition-[transform,background-color] duration-150 hover:bg-mid-navy active:scale-[0.97] disabled:opacity-60">{formStatus === "submitting" ? "Sending..." : "Send enquiry"}{formStatus !== "submitting" && <ArrowRight className="h-4 w-4" />}</button>
                 {formStatus === "success" && <p className="flex items-center gap-2 text-sm font-medium text-emerald-700"><Check className="h-4 w-4" />Thank you. We will be in touch shortly.</p>}
               </div>
             </form>
@@ -243,11 +271,19 @@ export default function SovereignHome() {
         </section>
       </main>
 
-      <footer className="border-t border-border-subtle bg-neutral-bg py-12">
-        <div className="fluid-container flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div><div className="relative h-10 w-[116px] rounded bg-mid-navy"><Image src="/avel-new.png" alt="AVEL Africa" fill sizes="116px" className="object-contain px-2" /></div><p className="mt-3 text-xs text-text-muted">Technology consultancy based in Kigali, Rwanda.</p></div>
-          <div className="flex flex-wrap gap-x-7 gap-y-3 text-xs font-medium text-text-muted">{navItems.map((item) => <button key={item.id} onClick={() => scrollTo(item.id)} className="hover:text-text-primary">{item.label}</button>)}</div>
-          <p className="text-xs text-text-muted">© {CURRENT_YEAR} AVEL Africa Ltd.</p>
+      <footer className="border-t border-border-subtle bg-neutral-bg py-10 lg:py-12">
+        <div className="fluid-container">
+          <div className="flex flex-col gap-10 border-b border-border-subtle pb-10 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="relative h-11 w-[126px] rounded bg-mid-navy"><Image src="/avel-new.png" alt="AVEL Africa" fill sizes="126px" className="object-contain px-2" /></div>
+              <p className="mt-4 max-w-xs text-sm leading-6 text-text-muted">Practical technology expertise for ambitious organizations across Africa.</p>
+            </div>
+            <nav className="flex flex-wrap gap-x-8 gap-y-4 text-sm font-medium text-text-muted" aria-label="Footer navigation">{navItems.map((item) => <button key={item.id} onClick={() => scrollTo(item.id)} className="transition-colors hover:text-text-primary">{item.label}</button>)}</nav>
+          </div>
+          <div className="flex flex-col gap-3 pt-6 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between">
+            <p>Technology consultancy · Kigali, Rwanda</p>
+            <p>© {CURRENT_YEAR} AVEL Africa Ltd.</p>
+          </div>
         </div>
       </footer>
     </div>
