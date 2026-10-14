@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, ChevronRight, ClipboardCheck, Code2, Mail, Menu, MessageSquare, Search, ShieldCheck, Sparkles, X } from "lucide-react";
+import { ArrowRight, Check, ClipboardCheck, Code2, Mail, Menu, MessageSquare, ShieldCheck, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import SculptureHero from "@/components/ui/liquid-sculpture-hero";
 
 const services = [
   {
@@ -121,42 +122,43 @@ export default function SovereignHome() {
       </AnimatePresence>
 
       <main>
-        <section className="relative overflow-hidden border-b border-border-subtle bg-white">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(19,56,99,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(19,56,99,0.045)_1px,transparent_1px)] bg-[size:64px_64px]" />
-          <div className="fluid-container relative grid min-h-[680px] items-center gap-14 py-20 lg:grid-cols-12 lg:py-28">
-            <div className="lg:col-span-7">
-              <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase text-mid-navy">
-                <span className="h-px w-8 bg-accent" /> Technology that advances the business
-              </motion.p>
-              <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="max-w-[760px] text-5xl font-bold leading-[1.02] text-text-primary sm:text-6xl lg:text-7xl">
-                Practical technology expertise, from decision to delivery.
-              </motion.h1>
-              <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16 }} className="mt-7 max-w-[650px] text-lg leading-8 text-text-muted sm:text-xl">
-                AVEL helps organizations make sound technology decisions, uncover risk, and build digital solutions that create measurable value.
-              </motion.p>
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.24 }} className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <button onClick={() => scrollTo("contact")} className="inline-flex items-center justify-center gap-2 rounded-md bg-mid-navy px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-text-primary">
-                  Discuss your project <ArrowRight className="h-4 w-4" />
-                </button>
-                <button onClick={() => scrollTo("services")} className="inline-flex items-center justify-center gap-2 rounded-md border border-border-subtle bg-white px-7 py-4 text-sm font-semibold text-text-primary transition-colors hover:border-mid-navy">
-                  Explore services <ChevronRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-            </div>
-            <div className="relative lg:col-span-5" aria-hidden="true">
-              <div className="relative mx-auto aspect-square max-w-[450px]">
-                <div className="absolute inset-[12%] rounded-full border border-mid-navy/15" />
-                <div className="absolute inset-[25%] rounded-full border border-mid-navy/20" />
-                <div className="absolute left-1/2 top-1/2 h-px w-[70%] -translate-x-1/2 -rotate-[28deg] bg-mid-navy/20" />
-                <div className="absolute left-1/2 top-1/2 h-px w-[70%] -translate-x-1/2 rotate-[34deg] bg-mid-navy/20" />
-                <div className="absolute left-1/2 top-1/2 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-mid-navy text-white shadow-[0_18px_45px_rgba(19,56,99,0.22)]"><Search className="h-9 w-9" /></div>
-                <div className="absolute left-[7%] top-[29%] grid h-14 w-14 place-items-center rounded-full border border-accent/30 bg-white text-mid-navy shadow-md"><Sparkles className="h-6 w-6" /></div>
-                <div className="absolute right-[6%] top-[35%] grid h-14 w-14 place-items-center rounded-full border border-accent/30 bg-white text-mid-navy shadow-md"><ClipboardCheck className="h-6 w-6" /></div>
-                <div className="absolute bottom-[5%] left-1/2 grid h-14 w-14 -translate-x-1/2 place-items-center rounded-full border border-accent/30 bg-white text-mid-navy shadow-md"><Code2 className="h-6 w-6" /></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SculptureHero
+          src="/avel-sculpture-hero.webp"
+          mobileSrc="/avel-sculpture-hero-mobile.webp"
+          imageAlt="Abstract metallic sculpture representing connected technology systems"
+          showNav={false}
+          eyebrow="Technology consultancy — Kigali, Rwanda"
+          headline={"Practical technology\nexpertise that delivers."}
+          headlineAccent="expertise that delivers."
+          body="We help organizations make sound technology decisions, uncover risk, and build digital solutions that create measurable value."
+          primaryCta={{ label: "Discuss your project", href: "#contact" }}
+          secondaryCta={{ label: "Explore services", href: "#services" }}
+          background="#F6F8FB"
+          darkBackground="#F6F8FB"
+          theme="light"
+          themeToggle={false}
+          textColor="#10233E"
+          accentColor="#34B3E4"
+          headingFont="var(--font-bricolage), system-ui, sans-serif"
+          accentFont="Georgia, 'Times New Roman', serif"
+          bodyFont="var(--font-geist-sans), system-ui, sans-serif"
+          loadFonts={false}
+          sculptureScale={0.92}
+          mobileSculptureScale={0.9}
+          particleDensity={0.8}
+          strength={0.85}
+          radius={190}
+          turbulence={0.8}
+          liquid={0.75}
+          returnSpeed={1.15}
+          intro
+        height="calc(100svh - 70px)"
+          backdropText="AVEL"
+          hint="Move across the form"
+          hintTouch="Touch the form"
+          showCredit={false}
+          className="border-b border-border-subtle"
+        />
 
         <section id="services" className="scroll-mt-20 bg-neutral-bg py-24 lg:py-32">
           <div className="fluid-container">
